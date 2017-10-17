@@ -1,15 +1,15 @@
 //
-//  ViewController.h
+//  CASLoginView.m
 //  CAShuttleBus
 //
 //  Created by 清风 on 2017/10/16.
 //  Copyright © 2017年 zjairchina. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "CASLoginView.h"
 
-@interface ViewController : UIViewController
+@implementation CASLoginView
+
 
 
 @end
-

@@ -8,13 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		4A16CF22134EC5BE9C7B2928 /* libPods-CAShuttleBus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F3CB359E2C5DA1550D9E5B /* libPods-CAShuttleBus.a */; };
-		CF8546B61F944A9A00374F74 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8546B51F944A9A00374F74 /* AppDelegate.m */; };
-		CF8546B91F944A9A00374F74 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8546B81F944A9A00374F74 /* ViewController.m */; };
+		CF64C0F31F95CFEB00933702 /* CASRootTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CF64C0F21F95CFEB00933702 /* CASRootTabBar.m */; };
+		CF64C0F61F95DA2600933702 /* UIView+CASFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = CF64C0F51F95DA2600933702 /* UIView+CASFrame.m */; };
+		CF64C0F91F95E29700933702 /* CASDriverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF64C0F81F95E29700933702 /* CASDriverViewController.m */; };
 		CF8546BC1F944A9A00374F74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8546BA1F944A9A00374F74 /* Main.storyboard */; };
 		CF8546BE1F944A9A00374F74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF8546BD1F944A9A00374F74 /* Assets.xcassets */; };
 		CF8546C11F944A9A00374F74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8546BF1F944A9A00374F74 /* LaunchScreen.storyboard */; };
-		CF8546C41F944A9A00374F74 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8546C31F944A9A00374F74 /* main.m */; };
 		CF8546CE1F944A9A00374F74 /* CAShuttleBusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8546CD1F944A9A00374F74 /* CAShuttleBusTests.m */; };
+		CF8C70101F94593C006BC3EB /* CASRootTabBarControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C700F1F94593C006BC3EB /* CASRootTabBarControllerViewController.m */; };
+		CF8C70131F945991006BC3EB /* CASRootNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C70121F945991006BC3EB /* CASRootNavigationViewController.m */; };
+		CF8C70141F945D89006BC3EB /* CASAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8546F01F94562300374F74 /* CASAppDelegate.m */; };
+		CF8C70151F945DAB006BC3EB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8546F21F94562300374F74 /* main.m */; };
+		CF8C701D1F9463A4006BC3EB /* CASLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C701C1F9463A4006BC3EB /* CASLoginViewController.m */; };
+		CF8C70201F946BF0006BC3EB /* CASLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C701F1F946BF0006BC3EB /* CASLoginView.m */; };
+		CF8C70241F948EE5006BC3EB /* UIImage+CASImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C70231F948EE5006BC3EB /* UIImage+CASImage.m */; };
+		CF8C702B1F94A4E1006BC3EB /* UIBarButtonItem+CASBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C702A1F94A4E1006BC3EB /* UIBarButtonItem+CASBarButtonItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,19 +38,35 @@
 /* Begin PBXFileReference section */
 		835E22532203427C2AFEC965 /* Pods-CAShuttleBus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CAShuttleBus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CAShuttleBus/Pods-CAShuttleBus.debug.xcconfig"; sourceTree = "<group>"; };
 		98AF155235BC4C5AB0E3A809 /* Pods-CAShuttleBus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CAShuttleBus.release.xcconfig"; path = "Pods/Target Support Files/Pods-CAShuttleBus/Pods-CAShuttleBus.release.xcconfig"; sourceTree = "<group>"; };
+		CF64C0F11F95CFEB00933702 /* CASRootTabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASRootTabBar.h; sourceTree = "<group>"; };
+		CF64C0F21F95CFEB00933702 /* CASRootTabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASRootTabBar.m; sourceTree = "<group>"; };
+		CF64C0F41F95DA2600933702 /* UIView+CASFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+CASFrame.h"; sourceTree = "<group>"; };
+		CF64C0F51F95DA2600933702 /* UIView+CASFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+CASFrame.m"; sourceTree = "<group>"; };
+		CF64C0F71F95E29700933702 /* CASDriverViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASDriverViewController.h; sourceTree = "<group>"; };
+		CF64C0F81F95E29700933702 /* CASDriverViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASDriverViewController.m; sourceTree = "<group>"; };
 		CF8546B11F944A9A00374F74 /* CAShuttleBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CAShuttleBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF8546B41F944A9A00374F74 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		CF8546B51F944A9A00374F74 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CF8546B71F944A9A00374F74 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CF8546B81F944A9A00374F74 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		CF8546BB1F944A9A00374F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CF8546BD1F944A9A00374F74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF8546C01F944A9A00374F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		CF8546C21F944A9A00374F74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CF8546C31F944A9A00374F74 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CF8546C91F944A9A00374F74 /* CAShuttleBusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CAShuttleBusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF8546CD1F944A9A00374F74 /* CAShuttleBusTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAShuttleBusTests.m; sourceTree = "<group>"; };
 		CF8546CF1F944A9A00374F74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF8546EF1F94562300374F74 /* CASAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASAppDelegate.h; sourceTree = "<group>"; };
+		CF8546F01F94562300374F74 /* CASAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASAppDelegate.m; sourceTree = "<group>"; };
+		CF8546F11F94562300374F74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF8546F21F94562300374F74 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CF8C700E1F94593C006BC3EB /* CASRootTabBarControllerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASRootTabBarControllerViewController.h; sourceTree = "<group>"; };
+		CF8C700F1F94593C006BC3EB /* CASRootTabBarControllerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASRootTabBarControllerViewController.m; sourceTree = "<group>"; };
+		CF8C70111F945991006BC3EB /* CASRootNavigationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASRootNavigationViewController.h; sourceTree = "<group>"; };
+		CF8C70121F945991006BC3EB /* CASRootNavigationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASRootNavigationViewController.m; sourceTree = "<group>"; };
+		CF8C701B1F9463A4006BC3EB /* CASLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASLoginViewController.h; sourceTree = "<group>"; };
+		CF8C701C1F9463A4006BC3EB /* CASLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASLoginViewController.m; sourceTree = "<group>"; };
+		CF8C701E1F946BF0006BC3EB /* CASLoginView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASLoginView.h; sourceTree = "<group>"; };
+		CF8C701F1F946BF0006BC3EB /* CASLoginView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASLoginView.m; sourceTree = "<group>"; };
+		CF8C70221F948EE5006BC3EB /* UIImage+CASImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+CASImage.h"; sourceTree = "<group>"; };
+		CF8C70231F948EE5006BC3EB /* UIImage+CASImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CASImage.m"; sourceTree = "<group>"; };
+		CF8C70291F94A4E1006BC3EB /* UIBarButtonItem+CASBarButtonItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+CASBarButtonItem.h"; sourceTree = "<group>"; };
+		CF8C702A1F94A4E1006BC3EB /* UIBarButtonItem+CASBarButtonItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+CASBarButtonItem.m"; sourceTree = "<group>"; };
 		E3F3CB359E2C5DA1550D9E5B /* libPods-CAShuttleBus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CAShuttleBus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -96,15 +120,11 @@
 		CF8546B31F944A9A00374F74 /* CAShuttleBus */ = {
 			isa = PBXGroup;
 			children = (
-				CF8546B41F944A9A00374F74 /* AppDelegate.h */,
-				CF8546B51F944A9A00374F74 /* AppDelegate.m */,
-				CF8546B71F944A9A00374F74 /* ViewController.h */,
-				CF8546B81F944A9A00374F74 /* ViewController.m */,
-				CF8546BA1F944A9A00374F74 /* Main.storyboard */,
+				CF8546D81F94562300374F74 /* Classes */,
 				CF8546BD1F944A9A00374F74 /* Assets.xcassets */,
+				CF8546BA1F944A9A00374F74 /* Main.storyboard */,
 				CF8546BF1F944A9A00374F74 /* LaunchScreen.storyboard */,
-				CF8546C21F944A9A00374F74 /* Info.plist */,
-				CF8546C31F944A9A00374F74 /* main.m */,
+				CF8546F11F94562300374F74 /* Info.plist */,
 			);
 			path = CAShuttleBus;
 			sourceTree = "<group>";
@@ -116,6 +136,258 @@
 				CF8546CF1F944A9A00374F74 /* Info.plist */,
 			);
 			path = CAShuttleBusTests;
+			sourceTree = "<group>";
+		};
+		CF8546D81F94562300374F74 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CF8C70171F946254006BC3EB /* Login */,
+				CF8546E91F94562300374F74 /* Main */,
+				CF8546E11F94562300374F74 /* Driver(司机入口) */,
+				CF8546DD1F94562300374F74 /* DailyShuttleBus(今日班车) */,
+				CF8546E51F94562300374F74 /* LineTable(线路表) */,
+				CF8546D91F94562300374F74 /* Announcement(公告) */,
+				CF8546ED1F94562300374F74 /* Supporting Files */,
+				CF8546F31F94562300374F74 /* Utils */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		CF8546D91F94562300374F74 /* Announcement(公告) */ = {
+			isa = PBXGroup;
+			children = (
+				CF8546DA1F94562300374F74 /* Controller */,
+				CF8546DB1F94562300374F74 /* Model */,
+				CF8546DC1F94562300374F74 /* View */,
+			);
+			path = "Announcement(公告)";
+			sourceTree = "<group>";
+		};
+		CF8546DA1F94562300374F74 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CF8546DB1F94562300374F74 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CF8546DC1F94562300374F74 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CF8546DD1F94562300374F74 /* DailyShuttleBus(今日班车) */ = {
+			isa = PBXGroup;
+			children = (
+				CF8546DE1F94562300374F74 /* Controller */,
+				CF8546DF1F94562300374F74 /* Model */,
+				CF8546E01F94562300374F74 /* View */,
+			);
+			path = "DailyShuttleBus(今日班车)";
+			sourceTree = "<group>";
+		};
+		CF8546DE1F94562300374F74 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CF8546DF1F94562300374F74 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CF8546E01F94562300374F74 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CF8546E11F94562300374F74 /* Driver(司机入口) */ = {
+			isa = PBXGroup;
+			children = (
+				CF8546E21F94562300374F74 /* Controller */,
+				CF8546E31F94562300374F74 /* Model */,
+				CF8546E41F94562300374F74 /* View */,
+			);
+			path = "Driver(司机入口)";
+			sourceTree = "<group>";
+		};
+		CF8546E21F94562300374F74 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CF64C0F71F95E29700933702 /* CASDriverViewController.h */,
+				CF64C0F81F95E29700933702 /* CASDriverViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CF8546E31F94562300374F74 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CF8546E41F94562300374F74 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CF8546E51F94562300374F74 /* LineTable(线路表) */ = {
+			isa = PBXGroup;
+			children = (
+				CF8546E61F94562300374F74 /* Controller */,
+				CF8546E71F94562300374F74 /* Model */,
+				CF8546E81F94562300374F74 /* View */,
+			);
+			path = "LineTable(线路表)";
+			sourceTree = "<group>";
+		};
+		CF8546E61F94562300374F74 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CF8546E71F94562300374F74 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CF8546E81F94562300374F74 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CF8546E91F94562300374F74 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				CF8546EA1F94562300374F74 /* Controller */,
+				CF8546EB1F94562300374F74 /* Model */,
+				CF8546EC1F94562300374F74 /* View */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		CF8546EA1F94562300374F74 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CF8C70111F945991006BC3EB /* CASRootNavigationViewController.h */,
+				CF8C70121F945991006BC3EB /* CASRootNavigationViewController.m */,
+				CF8C700E1F94593C006BC3EB /* CASRootTabBarControllerViewController.h */,
+				CF8C700F1F94593C006BC3EB /* CASRootTabBarControllerViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CF8546EB1F94562300374F74 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CF8546EC1F94562300374F74 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CF64C0F11F95CFEB00933702 /* CASRootTabBar.h */,
+				CF64C0F21F95CFEB00933702 /* CASRootTabBar.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CF8546ED1F94562300374F74 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CF8546EE1F94562300374F74 /* Base */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CF8546EE1F94562300374F74 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				CF8546EF1F94562300374F74 /* CASAppDelegate.h */,
+				CF8546F01F94562300374F74 /* CASAppDelegate.m */,
+				CF8546F21F94562300374F74 /* main.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		CF8546F31F94562300374F74 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CF8546F41F94562300374F74 /* Categories */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		CF8546F41F94562300374F74 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CF8C70221F948EE5006BC3EB /* UIImage+CASImage.h */,
+				CF8C70231F948EE5006BC3EB /* UIImage+CASImage.m */,
+				CF8C70291F94A4E1006BC3EB /* UIBarButtonItem+CASBarButtonItem.h */,
+				CF8C702A1F94A4E1006BC3EB /* UIBarButtonItem+CASBarButtonItem.m */,
+				CF64C0F41F95DA2600933702 /* UIView+CASFrame.h */,
+				CF64C0F51F95DA2600933702 /* UIView+CASFrame.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		CF8C70171F946254006BC3EB /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				CF8C70181F946254006BC3EB /* Controller */,
+				CF8C70191F946254006BC3EB /* Model */,
+				CF8C701A1F946254006BC3EB /* View */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		CF8C70181F946254006BC3EB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CF8C701B1F9463A4006BC3EB /* CASLoginViewController.h */,
+				CF8C701C1F9463A4006BC3EB /* CASLoginViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CF8C70191F946254006BC3EB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CF8C701A1F946254006BC3EB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CF8C701E1F946BF0006BC3EB /* CASLoginView.h */,
+				CF8C701F1F946BF0006BC3EB /* CASLoginView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		ED9C6224509A8829C152917F /* Pods */ = {
@@ -284,9 +556,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF8546B91F944A9A00374F74 /* ViewController.m in Sources */,
-				CF8546C41F944A9A00374F74 /* main.m in Sources */,
-				CF8546B61F944A9A00374F74 /* AppDelegate.m in Sources */,
+				CF64C0F91F95E29700933702 /* CASDriverViewController.m in Sources */,
+				CF8C70131F945991006BC3EB /* CASRootNavigationViewController.m in Sources */,
+				CF8C702B1F94A4E1006BC3EB /* UIBarButtonItem+CASBarButtonItem.m in Sources */,
+				CF8C70141F945D89006BC3EB /* CASAppDelegate.m in Sources */,
+				CF8C701D1F9463A4006BC3EB /* CASLoginViewController.m in Sources */,
+				CF8C70151F945DAB006BC3EB /* main.m in Sources */,
+				CF8C70201F946BF0006BC3EB /* CASLoginView.m in Sources */,
+				CF8C70101F94593C006BC3EB /* CASRootTabBarControllerViewController.m in Sources */,
+				CF64C0F31F95CFEB00933702 /* CASRootTabBar.m in Sources */,
+				CF64C0F61F95DA2600933702 /* UIView+CASFrame.m in Sources */,
+				CF8C70241F948EE5006BC3EB /* UIImage+CASImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,7 +656,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -425,7 +705,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -440,6 +720,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X98AC2E273;
 				INFOPLIST_FILE = CAShuttleBus/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.com.airchina.CAShuttleBus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -455,6 +736,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X98AC2E273;
 				INFOPLIST_FILE = CAShuttleBus/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.com.airchina.CAShuttleBus;
 				PRODUCT_NAME = "$(TARGET_NAME)";

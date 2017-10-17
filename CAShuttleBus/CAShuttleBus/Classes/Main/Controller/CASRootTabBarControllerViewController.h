@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  CASRootTabBarControllerViewController.h
 //  CAShuttleBus
 //
 //  Created by 清风 on 2017/10/16.
@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
+@interface CASRootTabBarControllerViewController : UITabBarController
 
 @end
-

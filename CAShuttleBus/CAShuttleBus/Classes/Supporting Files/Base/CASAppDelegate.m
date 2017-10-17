@@ -6,17 +6,36 @@
 //  Copyright © 2017年 zjairchina. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "CASAppDelegate.h"
+#import "CASLoginViewController.h"
+#import "CASRootTabBarControllerViewController.h"
 
-@interface AppDelegate ()
+@interface CASAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation CASAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    
+    //1.创建窗口
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    //2.设置窗口根控制器
+//    CASLoginViewController *rootVC = [[CASLoginViewController alloc] init];
+    CASRootTabBarControllerViewController *rootVC = [[CASRootTabBarControllerViewController alloc] init];
+    //init底层调用 initWithNib
+    self.window.rootViewController = rootVC;
+    //3.设置为application的主窗口并且显示
+    [self.window makeKeyAndVisible];
+    
+    
+    
+    
+    
+    
+    
     return YES;
 }
 
