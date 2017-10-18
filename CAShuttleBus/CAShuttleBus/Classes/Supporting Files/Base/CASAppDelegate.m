@@ -23,8 +23,8 @@
     //1.创建窗口
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     //2.设置窗口根控制器
-//    CASLoginViewController *rootVC = [[CASLoginViewController alloc] init];
-    CASRootTabBarControllerViewController *rootVC = [[CASRootTabBarControllerViewController alloc] init];
+    CASLoginViewController *rootVC = [[CASLoginViewController alloc] init];
+//    CASRootTabBarControllerViewController *rootVC = [[CASRootTabBarControllerViewController alloc] init];
     //init底层调用 initWithNib
     self.window.rootViewController = rootVC;
     //3.设置为application的主窗口并且显示
