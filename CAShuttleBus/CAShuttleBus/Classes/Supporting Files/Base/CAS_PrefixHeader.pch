@@ -1,0 +1,22 @@
+//
+//  CAS_PrefixHeader.pch
+//  CAShuttleBus
+//
+//  Created by 清风 on 2017/10/18.
+//  Copyright © 2017年 zjairchina. All rights reserved.
+//
+
+#ifndef CAS_PrefixHeader_pch
+#define CAS_PrefixHeader_pch
+
+#ifdef DEBUG//调试阶段
+
+#define CASLog(...) NSLog(__VA_ARGS__)
+
+#else//发布阶段
+
+#define CASLog(...)
+
+#endif
+
+#endif /* CAS_PrefixHeader_pch */

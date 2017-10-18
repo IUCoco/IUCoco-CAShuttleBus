@@ -44,6 +44,7 @@
 		CF64C0F51F95DA2600933702 /* UIView+CASFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+CASFrame.m"; sourceTree = "<group>"; };
 		CF64C0F71F95E29700933702 /* CASDriverViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASDriverViewController.h; sourceTree = "<group>"; };
 		CF64C0F81F95E29700933702 /* CASDriverViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASDriverViewController.m; sourceTree = "<group>"; };
+		CF64C0FA1F97613F00933702 /* CAS_PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAS_PrefixHeader.pch; sourceTree = "<group>"; };
 		CF8546B11F944A9A00374F74 /* CAShuttleBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CAShuttleBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF8546BB1F944A9A00374F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CF8546BD1F944A9A00374F74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -330,6 +331,7 @@
 				CF8546EF1F94562300374F74 /* CASAppDelegate.h */,
 				CF8546F01F94562300374F74 /* CASAppDelegate.m */,
 				CF8546F21F94562300374F74 /* main.m */,
+				CF64C0FA1F97613F00933702 /* CAS_PrefixHeader.pch */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -720,6 +722,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X98AC2E273;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/CAShuttleBus/Classes/Supporting Files/Base/CAS_PrefixHeader.pch";
 				INFOPLIST_FILE = CAShuttleBus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -737,6 +741,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X98AC2E273;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/CAShuttleBus/Classes/Supporting Files/Base/CAS_PrefixHeader.pch";
 				INFOPLIST_FILE = CAShuttleBus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
