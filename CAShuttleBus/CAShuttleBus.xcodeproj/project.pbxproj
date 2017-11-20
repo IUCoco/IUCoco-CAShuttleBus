@@ -462,6 +462,11 @@
 					CF8546B01F944A9A00374F74 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					CF8546C81F944A9A00374F74 = {
 						CreatedOnToolsVersion = 9.0;
@@ -549,9 +554,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CAShuttleBus/Pods-CAShuttleBus-resources.sh",
+				"${PODS_ROOT}/TencentMapSdk/TencentMapSdk/Bundles/SOSOMAPRES.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -730,6 +738,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X98AC2E273;
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CAShuttleBus/Classes/Supporting Files/Base/CAS_PrefixHeader.pch";
 				INFOPLIST_FILE = CAShuttleBus/Info.plist;
@@ -749,6 +758,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X98AC2E273;
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CAShuttleBus/Classes/Supporting Files/Base/CAS_PrefixHeader.pch";
 				INFOPLIST_FILE = CAShuttleBus/Info.plist;

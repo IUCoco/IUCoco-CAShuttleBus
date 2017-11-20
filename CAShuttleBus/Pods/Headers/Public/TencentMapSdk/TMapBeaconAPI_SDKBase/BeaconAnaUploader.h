@@ -1,0 +1,1 @@
+../../../../TencentMapSdk/TencentMapSdk/Framework/TMapBeaconAPI_SDKBase.framework/Headers/BeaconAnaUploader.h

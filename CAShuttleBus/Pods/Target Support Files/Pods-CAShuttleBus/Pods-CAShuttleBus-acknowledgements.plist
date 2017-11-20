@@ -71,6 +71,18 @@ THE SOFTWARE.</string>
 		</dict>
 		<dict>
 			<key>FooterText</key>
+			<string>Copyright (c) 2016 tencent.com
+
+This software is not an open source project. It's not allowed to use it outside</string>
+			<key>License</key>
+			<string>BSD</string>
+			<key>Title</key>
+			<string>TencentMapSdk</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
 			<string>The MIT License (MIT)
 
 Copyright (c) 2015 ibireme &lt;ibireme@gmail.com&gt;
