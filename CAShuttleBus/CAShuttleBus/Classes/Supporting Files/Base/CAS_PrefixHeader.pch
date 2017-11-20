@@ -9,14 +9,33 @@
 #ifndef CAS_PrefixHeader_pch
 #define CAS_PrefixHeader_pch
 
+//公用头文件 third
+#import <Masonry.h>//上左下右WH
+#import <YYText.h>
+
+//公用头文件 self
+  //base
+#import "WeakAndStrong.h"
+  //Categories
+#import "UIImage+CASImage.h"
+#import "UIView+CASFrame.h"
+#import "UIButton+Block.h"
+
+//Debug Log
 #ifdef DEBUG//调试阶段
-
 #define CASLog(...) NSLog(__VA_ARGS__)
-
 #else//发布阶段
-
 #define CASLog(...)
-
 #endif
+
+//size
+#define CASScreenWith [UIScreen mainScreen].bounds.size.width
+#define CASScreenHight [UIScreen mainScreen].bounds.size.height
+#define TopBar_Height 20
+#define NavigationBar_HEIGHT 44
+#define TabBar_HEIGHT 49
+
+//color
+#define CASARGBColor(a, r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
 
 #endif /* CAS_PrefixHeader_pch */

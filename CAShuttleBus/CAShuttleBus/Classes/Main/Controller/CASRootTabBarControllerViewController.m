@@ -10,7 +10,7 @@
 #import "CASRootTabBar.h"
 #import "CASDriverViewController.h"
 #import "CASRootNavigationViewController.h"
-#import "UIImage+CASImage.h"
+
 
 @interface CASRootTabBarControllerViewController ()
 

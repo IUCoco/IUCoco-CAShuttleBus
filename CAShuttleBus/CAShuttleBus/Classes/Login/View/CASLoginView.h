@@ -10,4 +10,10 @@
 
 @interface CASLoginView : UIView
 
+@property (nonatomic, strong) UITextField *accountTextF;
+@property (nonatomic, strong) UITextField *pwdTextF;
+@property (nonatomic, strong) UIButton *loginBtn;
+@property (nonatomic, strong) UIButton *showOrHidePwdBtn;//眼睛
+@property (nonatomic, strong) UIButton *termsOfServiceBtn;
+
 @end
