@@ -12,6 +12,7 @@
 //公用头文件 third
 #import <Masonry.h>//上左下右WH
 #import <YYText.h>
+#import <JCAlertController.h>
 
 //公用头文件 self
   //base
