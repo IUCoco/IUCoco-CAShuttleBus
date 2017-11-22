@@ -25,6 +25,8 @@
 		CF8C70241F948EE5006BC3EB /* UIImage+CASImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C70231F948EE5006BC3EB /* UIImage+CASImage.m */; };
 		CF8C702B1F94A4E1006BC3EB /* UIBarButtonItem+CASBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C702A1F94A4E1006BC3EB /* UIBarButtonItem+CASBarButtonItem.m */; };
 		CFC73EEC1FC3EE83008603B2 /* CASKeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC73EEB1FC3EE83008603B2 /* CASKeychainWrapper.m */; };
+		CFC73EF21FC44B33008603B2 /* CASShuttleBusRouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC73EF11FC44B33008603B2 /* CASShuttleBusRouteViewController.m */; };
+		CFC73EF51FC44D64008603B2 /* CASShuttleBusRouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC73EF41FC44D64008603B2 /* CASShuttleBusRouteCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,10 @@
 		CFC73EEA1FC3EE83008603B2 /* CASKeychainWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASKeychainWrapper.h; sourceTree = "<group>"; };
 		CFC73EEB1FC3EE83008603B2 /* CASKeychainWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASKeychainWrapper.m; sourceTree = "<group>"; };
 		CFC73EEF1FC3F90E008603B2 /* CASKeychainConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASKeychainConfiguration.h; sourceTree = "<group>"; };
+		CFC73EF01FC44B33008603B2 /* CASShuttleBusRouteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASShuttleBusRouteViewController.h; sourceTree = "<group>"; };
+		CFC73EF11FC44B33008603B2 /* CASShuttleBusRouteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASShuttleBusRouteViewController.m; sourceTree = "<group>"; };
+		CFC73EF31FC44D64008603B2 /* CASShuttleBusRouteCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASShuttleBusRouteCell.h; sourceTree = "<group>"; };
+		CFC73EF41FC44D64008603B2 /* CASShuttleBusRouteCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASShuttleBusRouteCell.m; sourceTree = "<group>"; };
 		E3F3CB359E2C5DA1550D9E5B /* libPods-CAShuttleBus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CAShuttleBus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -241,6 +247,8 @@
 			children = (
 				CF64C0F71F95E29700933702 /* CASDriverViewController.h */,
 				CF64C0F81F95E29700933702 /* CASDriverViewController.m */,
+				CFC73EF01FC44B33008603B2 /* CASShuttleBusRouteViewController.h */,
+				CFC73EF11FC44B33008603B2 /* CASShuttleBusRouteViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -255,6 +263,8 @@
 		CF8546E41F94562300374F74 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CFC73EF31FC44D64008603B2 /* CASShuttleBusRouteCell.h */,
+				CFC73EF41FC44D64008603B2 /* CASShuttleBusRouteCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -594,7 +604,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF64C0F91F95E29700933702 /* CASDriverViewController.m in Sources */,
+				CFC73EF21FC44B33008603B2 /* CASShuttleBusRouteViewController.m in Sources */,
 				CF8C70131F945991006BC3EB /* CASRootNavigationViewController.m in Sources */,
+				CFC73EF51FC44D64008603B2 /* CASShuttleBusRouteCell.m in Sources */,
 				CF8C702B1F94A4E1006BC3EB /* UIBarButtonItem+CASBarButtonItem.m in Sources */,
 				CF1669521FC2A330009CDA04 /* UIButton+Block.m in Sources */,
 				CFC73EEC1FC3EE83008603B2 /* CASKeychainWrapper.m in Sources */,

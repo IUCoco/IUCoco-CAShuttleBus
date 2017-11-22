@@ -39,6 +39,18 @@ typedef NS_ENUM(NSUInteger, LoginStatus) {
     [self dealTouchUpInside];
 }
 
+/**
+ * 功能：禁止横屏
+ */
+
+- (BOOL)shouldAutorotate{
+    return NO;
+}
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(nullable UIWindow *)window
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 #pragma mark - setUpUI
 - (void)setUpUI {
     UIView *CASLoginV = [[CASLoginView alloc] init];
