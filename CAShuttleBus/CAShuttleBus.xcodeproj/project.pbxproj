@@ -594,7 +594,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CAShuttleBus/Pods-CAShuttleBus-resources.sh",
-				"${PODS_ROOT}/TencentMapSdk/TencentMapSdk/Bundles/SOSOMAPRES.bundle",
+				"${PODS_ROOT}/BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/Resources/mapapi.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (

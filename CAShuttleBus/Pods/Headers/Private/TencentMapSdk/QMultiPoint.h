@@ -1,1 +1,0 @@
-../../../TencentMapSdk/TencentMapSdk/Classes/QMap/include/QMultiPoint.h

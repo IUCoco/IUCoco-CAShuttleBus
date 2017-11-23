@@ -6,7 +6,7 @@ target 'CAShuttleBus' do
   pod 'Masonry', '~> 1.0.2'
   pod 'YYText', '~> 1.0.7'
   pod 'JCAlertController', '~> 2.2.1'
-  pod 'TencentMapSdk', '~> 2.1.1.04.09'
   pod 'MJExtension', '~> 3.0.13'
-
+  pod 'BaiduMapKit', '~> 3.4.0'
+  
 end
