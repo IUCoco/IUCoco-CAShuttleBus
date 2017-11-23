@@ -103,43 +103,59 @@
     float animateY = 0;  // 做弹性动画的Y
     float margin = 10;   // 动画的幅度
     float offsetY = self.shadowView.frame.origin.y; // 这是上一次Y的位置
-    //    NSLog(@"==== === %f == =====",self.vc.table.contentOffset.y);
     
     if (swipe.direction == UISwipeGestureRecognizerDirectionDown) {
-        //        NSLog(@"==== down =====");
-        
         // 当vc.table滑到头 且是下滑时，让vc.table禁止滑动
         if (self.shuttleBusRouteVC.myTab.contentOffset.y == 0) {
             self.shuttleBusRouteVC.myTab.scrollEnabled = NO;
         }
-        
-        if (offsetY >= Y1 && offsetY < Y2) {//最上面Y50，最下Y250，即搜索条在secondV的bottom值，最下再向下滑直接最上
+        //三段位置方式
+#if 0
+        if (offsetY >= Y1 && offsetY < Y2) {
             // 停在y2的位置
             stopY = Y2;
-        }else if (offsetY >= Y2 ){//最高点继续向下，第一个阶段停留在中部Y3位置
+        }else if (offsetY >= Y2 ){
             // 停在y3的位置
             stopY = Y3;
-        }else{//滑到最底
+        }else{
             stopY = Y1;
         }
+#endif
+        //两段位置方式
+        if (offsetY >= Y1) {
+            stopY = Y3;
+        }else {
+            stopY = Y1;
+        }
+        
         animateY = stopY + margin;
     }
     if (swipe.direction == UISwipeGestureRecognizerDirectionUp) {
-        //        NSLog(@"==== up =====");
-        
+        //三段位置方式
+#if 0
         if (offsetY <= Y2) {//中间段位直接上滑动至最上
             // 停在y1的位置
             stopY = Y1;
             // 当停在Y1位置 且是上划时，让vc.table不再禁止滑动
             self.shuttleBusRouteVC.myTab.scrollEnabled = YES;
-        }else if (offsetY > Y2 && offsetY <= Y3 ){//中间和最下的位置段，直接最下，动画下移也最下
-            // 停在y2的位置
+        }else if (offsetY > Y2 && offsetY <= Y3 ){
             stopY = Y2;
-        }else{//中间
+        }else{
+            stopY = Y3;
+        }
+#endif
+        //两段位置方式
+        if (offsetY <= Y3) {
+            stopY = Y1;
+            // 当停在Y1位置 且是上划时，让vc.table不再禁止滑动
+            self.shuttleBusRouteVC.myTab.scrollEnabled = YES;
+        }else {
             stopY = Y3;
         }
         animateY = stopY - margin;
     }
+
+    
     
     [UIView animateWithDuration:0.4 animations:^{
         
