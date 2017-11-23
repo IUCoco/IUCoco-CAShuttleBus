@@ -24,6 +24,8 @@
 		CF8C70201F946BF0006BC3EB /* CASLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C701F1F946BF0006BC3EB /* CASLoginView.m */; };
 		CF8C70241F948EE5006BC3EB /* UIImage+CASImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C70231F948EE5006BC3EB /* UIImage+CASImage.m */; };
 		CF8C702B1F94A4E1006BC3EB /* UIBarButtonItem+CASBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C702A1F94A4E1006BC3EB /* UIBarButtonItem+CASBarButtonItem.m */; };
+		CFBB03351FC66C1A00173733 /* CASShuttleBusRouteItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBB03341FC66C1A00173733 /* CASShuttleBusRouteItem.m */; };
+		CFBB03371FC68B9000173733 /* CASShuttleBusRouteItem.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFBB03361FC68B9000173733 /* CASShuttleBusRouteItem.plist */; };
 		CFC73EEC1FC3EE83008603B2 /* CASKeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC73EEB1FC3EE83008603B2 /* CASKeychainWrapper.m */; };
 		CFC73EF21FC44B33008603B2 /* CASShuttleBusRouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC73EF11FC44B33008603B2 /* CASShuttleBusRouteViewController.m */; };
 		CFC73EF51FC44D64008603B2 /* CASShuttleBusRouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC73EF41FC44D64008603B2 /* CASShuttleBusRouteCell.m */; };
@@ -75,6 +77,9 @@
 		CF8C70231F948EE5006BC3EB /* UIImage+CASImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CASImage.m"; sourceTree = "<group>"; };
 		CF8C70291F94A4E1006BC3EB /* UIBarButtonItem+CASBarButtonItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+CASBarButtonItem.h"; sourceTree = "<group>"; };
 		CF8C702A1F94A4E1006BC3EB /* UIBarButtonItem+CASBarButtonItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+CASBarButtonItem.m"; sourceTree = "<group>"; };
+		CFBB03331FC66C1A00173733 /* CASShuttleBusRouteItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASShuttleBusRouteItem.h; sourceTree = "<group>"; };
+		CFBB03341FC66C1A00173733 /* CASShuttleBusRouteItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASShuttleBusRouteItem.m; sourceTree = "<group>"; };
+		CFBB03361FC68B9000173733 /* CASShuttleBusRouteItem.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CASShuttleBusRouteItem.plist; sourceTree = "<group>"; };
 		CFC73EE61FC3B8DE008603B2 /* CAShuttleBus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CAShuttleBus.entitlements; sourceTree = "<group>"; };
 		CFC73EEA1FC3EE83008603B2 /* CASKeychainWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASKeychainWrapper.h; sourceTree = "<group>"; };
 		CFC73EEB1FC3EE83008603B2 /* CASKeychainWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASKeychainWrapper.m; sourceTree = "<group>"; };
@@ -256,6 +261,9 @@
 		CF8546E31F94562300374F74 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CFBB03331FC66C1A00173733 /* CASShuttleBusRouteItem.h */,
+				CFBB03341FC66C1A00173733 /* CASShuttleBusRouteItem.m */,
+				CFBB03361FC68B9000173733 /* CASShuttleBusRouteItem.plist */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -531,6 +539,7 @@
 			files = (
 				CF8546C11F944A9A00374F74 /* LaunchScreen.storyboard in Resources */,
 				CF8546BE1F944A9A00374F74 /* Assets.xcassets in Resources */,
+				CFBB03371FC68B9000173733 /* CASShuttleBusRouteItem.plist in Resources */,
 				CF8546BC1F944A9A00374F74 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -614,6 +623,7 @@
 				CF8C701D1F9463A4006BC3EB /* CASLoginViewController.m in Sources */,
 				CF8C70151F945DAB006BC3EB /* main.m in Sources */,
 				CF8C70201F946BF0006BC3EB /* CASLoginView.m in Sources */,
+				CFBB03351FC66C1A00173733 /* CASShuttleBusRouteItem.m in Sources */,
 				CF8C70101F94593C006BC3EB /* CASRootTabBarControllerViewController.m in Sources */,
 				CF64C0F31F95CFEB00933702 /* CASRootTabBar.m in Sources */,
 				CF64C0F61F95DA2600933702 /* UIView+CASFrame.m in Sources */,

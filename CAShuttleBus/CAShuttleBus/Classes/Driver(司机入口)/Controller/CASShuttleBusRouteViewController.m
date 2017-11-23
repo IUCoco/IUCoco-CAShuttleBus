@@ -8,6 +8,7 @@
 
 #import "CASShuttleBusRouteViewController.h"
 #import "CASShuttleBusRouteCell.h"
+#import "CASShuttleBusRouteItem.h"
 
 #define Y1               50
 
@@ -62,7 +63,8 @@ static NSString * const CASShuttleBusRouteCellID = @"CASShuttleBusRouteCellID";
 
 - (NSMutableArray *)shuttleBusRouteArrM {
     if (!_shuttleBusRouteArrM) {
-#warning 暂时没有数据源
+#warning 暂时没有数据源 利用plist代替
+        _shuttleBusRouteArrM = [CASShuttleBusRouteItem mj_objectArrayWithFilename:@"CASShuttleBusRouteItem.plist"];
     }
     return _shuttleBusRouteArrM;
 }
@@ -73,8 +75,7 @@ static NSString * const CASShuttleBusRouteCellID = @"CASShuttleBusRouteCellID";
     //必须添加，否则点击搜索框向上移
     self.definesPresentationContext = YES;
     [self setupSubViews];
-#warning 暂时注释
-//    [self.myTab registerClass:[CASShuttleBusRouteCell class] forCellReuseIdentifier:CASShuttleBusRouteCellID];
+    [self.myTab registerClass:[CASShuttleBusRouteCell class] forCellReuseIdentifier:CASShuttleBusRouteCellID];
 }
 
 /**
@@ -138,26 +139,16 @@ static NSString * const CASShuttleBusRouteCellID = @"CASShuttleBusRouteCellID";
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 //    return self.shuttleBusRouteArrM.count;
-    return 20;
+    return self.shuttleBusRouteArrM.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 80;
+    return 120;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-#warning 一切为了测试
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CASShuttleBusRouteCellID];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                      reuseIdentifier:CASShuttleBusRouteCellID];
-    }
-    
-    cell.backgroundColor = [UIColor whiteColor];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;  // 去掉选中效果
-    cell.focusStyle = UITableViewCellStyleSubtitle;
-    cell.imageView.image = [UIImage imageNamed:@"login_password"];
-    cell.textLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row];
+    CASShuttleBusRouteCell *cell = [tableView dequeueReusableCellWithIdentifier:CASShuttleBusRouteCellID];
+    cell.item = self.shuttleBusRouteArrM[indexPath.row];
     return cell;
 }
 

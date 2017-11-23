@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class CASShuttleBusRouteItem;
 
 @interface CASShuttleBusRouteCell : UITableViewCell
+
+@property (nonatomic, strong) CASShuttleBusRouteItem *item;
 
 @end
