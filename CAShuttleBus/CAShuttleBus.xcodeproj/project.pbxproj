@@ -18,7 +18,7 @@
 		CF8546CE1F944A9A00374F74 /* CAShuttleBusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8546CD1F944A9A00374F74 /* CAShuttleBusTests.m */; };
 		CF8C70101F94593C006BC3EB /* CASRootTabBarControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C700F1F94593C006BC3EB /* CASRootTabBarControllerViewController.m */; };
 		CF8C70131F945991006BC3EB /* CASRootNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C70121F945991006BC3EB /* CASRootNavigationViewController.m */; };
-		CF8C70141F945D89006BC3EB /* CASAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8546F01F94562300374F74 /* CASAppDelegate.m */; };
+		CF8C70141F945D89006BC3EB /* CASAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF8546F01F94562300374F74 /* CASAppDelegate.mm */; };
 		CF8C70151F945DAB006BC3EB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8546F21F94562300374F74 /* main.m */; };
 		CF8C701D1F9463A4006BC3EB /* CASLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C701C1F9463A4006BC3EB /* CASLoginViewController.m */; };
 		CF8C70201F946BF0006BC3EB /* CASLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C701F1F946BF0006BC3EB /* CASLoginView.m */; };
@@ -62,7 +62,7 @@
 		CF8546CD1F944A9A00374F74 /* CAShuttleBusTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAShuttleBusTests.m; sourceTree = "<group>"; };
 		CF8546CF1F944A9A00374F74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF8546EF1F94562300374F74 /* CASAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASAppDelegate.h; sourceTree = "<group>"; };
-		CF8546F01F94562300374F74 /* CASAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASAppDelegate.m; sourceTree = "<group>"; };
+		CF8546F01F94562300374F74 /* CASAppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CASAppDelegate.mm; sourceTree = "<group>"; };
 		CF8546F11F94562300374F74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF8546F21F94562300374F74 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CF8C700E1F94593C006BC3EB /* CASRootTabBarControllerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASRootTabBarControllerViewController.h; sourceTree = "<group>"; };
@@ -357,7 +357,7 @@
 			isa = PBXGroup;
 			children = (
 				CF8546EF1F94562300374F74 /* CASAppDelegate.h */,
-				CF8546F01F94562300374F74 /* CASAppDelegate.m */,
+				CF8546F01F94562300374F74 /* CASAppDelegate.mm */,
 				CF8546F21F94562300374F74 /* main.m */,
 				CF64C0FA1F97613F00933702 /* CAS_PrefixHeader.pch */,
 				CF16694F1FC2A0BF009CDA04 /* WeakAndStrong.h */,
@@ -619,7 +619,7 @@
 				CF8C702B1F94A4E1006BC3EB /* UIBarButtonItem+CASBarButtonItem.m in Sources */,
 				CF1669521FC2A330009CDA04 /* UIButton+Block.m in Sources */,
 				CFC73EEC1FC3EE83008603B2 /* CASKeychainWrapper.m in Sources */,
-				CF8C70141F945D89006BC3EB /* CASAppDelegate.m in Sources */,
+				CF8C70141F945D89006BC3EB /* CASAppDelegate.mm in Sources */,
 				CF8C701D1F9463A4006BC3EB /* CASLoginViewController.m in Sources */,
 				CF8C70151F945DAB006BC3EB /* main.m in Sources */,
 				CF8C70201F946BF0006BC3EB /* CASLoginView.m in Sources */,

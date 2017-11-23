@@ -8,12 +8,14 @@
 
 #import "CASDriverViewController.h"
 #import "CASShuttleBusRouteViewController.h"
+#import <BaiduMapAPI_Map/BMKMapComponent.h>
+#import<BaiduMapAPI_Location/BMKLocationComponent.h>
 
 #define Y1               50
 #define Y2               self.view.frame.size.height - 250
 #define Y3               self.view.frame.size.height - 64
 
-@interface CASDriverViewController ()<UIGestureRecognizerDelegate>
+@interface CASDriverViewController ()<UIGestureRecognizerDelegate, BMKMapViewDelegate, BMKLocationServiceDelegate>
 
 @property (nonatomic, strong) CASShuttleBusRouteViewController *shuttleBusRouteVC;
 
@@ -21,6 +23,9 @@
 @property (nonatomic, strong) UIView *shadowView;
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipe1;
 @property (nonatomic, strong) UIPanGestureRecognizer *pan;
+@property (nonatomic, strong) BMKMapView *mapView;
+/** 定位功能 */
+@property (nonatomic, strong) BMKLocationService *locService;
 
 @end
 
@@ -67,7 +72,10 @@
 #pragma mark - system
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor orangeColor];
+    [self mapView];
+    //设置定位
+    [self locService];
+    self.view.backgroundColor = [UIColor whiteColor];
     //隐藏nav+tabBar
     self.navigationController.navigationBarHidden = YES;
     self.tabBarController.tabBar.hidden = YES;
@@ -194,5 +202,61 @@
     return NO;
 }
 
+#pragma mark - baiduMap处理合集
+
+#pragma mark - baiduMap_lazyMapView
+- (BMKMapView *)mapView {
+    if (!_mapView) {
+        _mapView = [[BMKMapView alloc] init];
+        _mapView.zoomLevel = 17;//14不错
+        [self.view addSubview:_mapView];
+        [_mapView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.view.mas_top);
+            make.left.equalTo(self.view.mas_left);
+            make.bottom.equalTo(self.view.mas_bottom).offset(-64);
+            make.right.equalTo(self.view.mas_right);
+        }];
+    }
+    return _mapView;
+}
+
+- (BMKLocationService *)locService {
+    if (!_locService) {
+        _locService = [[BMKLocationService alloc] init];
+        //设定定位精度
+        _locService.desiredAccuracy = kCLLocationAccuracyBest;
+        //开启定位
+        [_locService startUserLocationService];
+    }
+    return _locService;
+}
+
+#pragma mark - baiduMap_生命周期
+/**
+ 自2.0.0起，BMKMapView新增viewWillAppear、viewWillDisappear方法来控制BMKMapView的生命周期，并且在一个时刻只能有一个BMKMapView接受回调消息，因此在使用BMKMapView的viewController中需要在viewWillAppear、viewWillDisappear方法中调用BMKMapView的对应的方法，并处理delegate
+ */
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [_mapView viewWillAppear];
+    _mapView.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
+    _locService.delegate = self;
+}
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [_mapView viewWillDisappear];
+    _mapView.delegate = nil; // 不用时，置nil
+    _locService.delegate = nil;
+}
+
+#pragma mark - 定位代理
+- (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation {
+    //展示定位
+    self.mapView.showsUserLocation = YES;
+    //更新位置数据
+    [self.mapView updateLocationData:userLocation];
+    //获取用户的坐标
+    self.mapView.centerCoordinate = userLocation.location.coordinate;
+}
 
 @end

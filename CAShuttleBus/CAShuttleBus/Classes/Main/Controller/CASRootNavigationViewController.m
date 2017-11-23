@@ -31,9 +31,7 @@
     [super viewDidLoad];
     //设置手势代理 左滑动
     self.interactivePopGestureRecognizer.delegate = self;
-    
-    //临时*****
-    self.view.backgroundColor = [UIColor redColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     
 }
 
