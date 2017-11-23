@@ -82,6 +82,7 @@
         lineDepartureBtn.titleLabel.font = [UIFont systemFontOfSize:15];
         lineDepartureBtn.layer.cornerRadius = 5.0;
         [lineDepartureBtn setTitle:@"线路发车" forState:UIControlStateNormal];
+        [lineDepartureBtn addTarget:self action:@selector(clickAction:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:lineDepartureBtn];
         self.lineDepartureBtn = lineDepartureBtn;
         //线路时长label
@@ -186,5 +187,14 @@
     self.busTypeLab.text = item.busType;
     self.totalTimeLabel.text = item.LineTime;
 }
+
+#pragma mark - click
+- (void)clickAction:(UIButton *)btn {
+    self.lineDepartureBtnClick(btn);
+}
+
+
+
+
 
 @end

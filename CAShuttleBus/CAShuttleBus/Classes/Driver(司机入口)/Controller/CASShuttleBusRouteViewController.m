@@ -149,6 +149,11 @@ static NSString * const CASShuttleBusRouteCellID = @"CASShuttleBusRouteCellID";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CASShuttleBusRouteCell *cell = [tableView dequeueReusableCellWithIdentifier:CASShuttleBusRouteCellID];
     cell.item = self.shuttleBusRouteArrM[indexPath.row];
+    //处理cell上面button点击
+    cell.lineDepartureBtnClick = ^(UIButton *btn) {
+        [self lineDepartureButtonClick:btn];
+        CASLog(@"%ld++++++++++", indexPath.row);
+    };
     return cell;
 }
 
@@ -199,6 +204,10 @@ static NSString * const CASShuttleBusRouteCellID = @"CASShuttleBusRouteCellID";
 -(void)didClickTextField:(DidClickTextFieldBlock)block
 {
     self.didClickTextFieldBlock = block;
+}
+
+- (void)lineDepartureButtonClick:(UIButton *)btn {
+    
 }
 
 @end

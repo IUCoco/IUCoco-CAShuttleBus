@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 @class CASShuttleBusRouteItem;
 
+typedef void(^ButtonClick)(UIButton *btn);
+
 @interface CASShuttleBusRouteCell : UITableViewCell
 
 @property (nonatomic, strong) CASShuttleBusRouteItem *item;
+@property (nonatomic, copy)ButtonClick lineDepartureBtnClick;
 
 @end
