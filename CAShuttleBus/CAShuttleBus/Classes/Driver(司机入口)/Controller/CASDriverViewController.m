@@ -10,12 +10,13 @@
 #import "CASShuttleBusRouteViewController.h"
 #import <BaiduMapAPI_Map/BMKMapComponent.h>
 #import<BaiduMapAPI_Location/BMKLocationComponent.h>
+#import <BaiduMapAPI_Search/BMKSearchComponent.h>
 
 #define Y1               50
 #define Y2               self.view.frame.size.height - 250
 #define Y3               self.view.frame.size.height - 64
 
-@interface CASDriverViewController ()<UIGestureRecognizerDelegate, BMKMapViewDelegate, BMKLocationServiceDelegate>
+@interface CASDriverViewController ()<UIGestureRecognizerDelegate, BMKMapViewDelegate, BMKLocationServiceDelegate, BMKGeoCodeSearchDelegate>
 
 @property (nonatomic, strong) CASShuttleBusRouteViewController *shuttleBusRouteVC;
 
@@ -26,6 +27,16 @@
 @property (nonatomic, strong) BMKMapView *mapView;
 /** 定位功能 */
 @property (nonatomic, strong) BMKLocationService *locService;
+/** 地理编码 */
+//@property (nonatomic, strong) CLGeocoder *geoC;
+@property (nonatomic, strong) BMKGeoCodeSearch *geoSearcher;
+
+//@property (nonatomic, strong) BMKUserLocation *userLocation;
+//自己地址坐标
+@property (nonatomic, assign) CLLocationCoordinate2D selfLocation;
+//目标地址坐标
+@property (nonatomic, assign) CLLocationCoordinate2D aidLocation;
+
 
 @end
 
@@ -75,6 +86,8 @@
     [self mapView];
     //设置定位
     [self locService];
+    //地理编码反编码
+    [self geoSearcher];
     self.view.backgroundColor = [UIColor whiteColor];
     //隐藏nav+tabBar
     self.navigationController.navigationBarHidden = YES;
@@ -241,12 +254,14 @@
     [_mapView viewWillAppear];
     _mapView.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
     _locService.delegate = self;
+    _geoSearcher.delegate = self;
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
     [_mapView viewWillDisappear];
     _mapView.delegate = nil; // 不用时，置nil
     _locService.delegate = nil;
+    _geoSearcher.delegate = nil;
 }
 
 #pragma mark - 定位代理
@@ -257,6 +272,64 @@
     [self.mapView updateLocationData:userLocation];
     //获取用户的坐标
     self.mapView.centerCoordinate = userLocation.location.coordinate;
+    
+    //发起反向地理编码检索 获取当前位置具体信息
+    CLLocationCoordinate2D pt = userLocation.location.coordinate;
+    self.selfLocation = pt;
+    CASLog(@"纬度%f,精度%f", pt.latitude, pt.longitude);
+    BMKReverseGeoCodeOption *reverseGeoCodeSearchOption = [[BMKReverseGeoCodeOption alloc]init];
+    reverseGeoCodeSearchOption.reverseGeoPoint = pt;
+    BOOL flag = [self.geoSearcher reverseGeoCode:reverseGeoCodeSearchOption];
+    if(flag)
+    {
+        NSLog(@"反geo检索发送成功");
+    }
+    else
+    {
+        NSLog(@"反geo检索发送失败");
+    }
 }
+
+#pragma mark - Geocoder
+/** 地理编码管理器 */
+//- (CLGeocoder *)geoC
+//{
+//    if (!_geoC) {
+//        _geoC = [[CLGeocoder alloc] init];
+//    }
+//    return _geoC;
+//}
+
+- (BMKGeoCodeSearch *)geoSearcher {
+    if (!_geoSearcher) {
+        _geoSearcher = [[BMKGeoCodeSearch alloc] init];
+    }
+    return _geoSearcher;
+}
+
+//正向地理编码
+- (void)onGetGeoCodeResult:(BMKGeoCodeSearch *)searcher result:(BMKGeoCodeResult *)result errorCode:(BMKSearchErrorCode)error {
+    
+}
+
+
+//接收反向地理编码结果
+- (void) onGetReverseGeoCodeResult:(BMKGeoCodeSearch *)searcher result:
+(BMKReverseGeoCodeResult *)result
+                        errorCode:(BMKSearchErrorCode)error{
+    if (error == BMK_SEARCH_NO_ERROR) {
+        //在此处理正常结果
+        NSLog(@"Success找到结果");
+        CASLog(@"%@+++++++++%@++++++++%@+++++%zd", result.addressDetail, result.address, result.businessCircle, result.location);
+        //本地定位位置
+        NSString *selfLocationStr = [NSString stringWithFormat:@"%@:%@", result.address, result.businessCircle];
+        CASLog(@"++++---%@++++---", selfLocationStr);
+//        self.selfLocation = result.location;
+    }
+    else {
+        NSLog(@"抱歉，未找到结果");
+    }
+}
+
 
 @end
