@@ -91,7 +91,7 @@
     [self locService];
     //地理编码反编码
     [self geoSearcher];
-    //后台任务测试
+    //后台任务持续定位
     [self startLocationService];
     //隐藏nav+tabBar
     self.navigationController.navigationBarHidden = YES;
