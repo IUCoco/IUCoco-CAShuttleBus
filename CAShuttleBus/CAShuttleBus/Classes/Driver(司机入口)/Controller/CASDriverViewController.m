@@ -11,6 +11,7 @@
 #import <BaiduMapAPI_Map/BMKMapComponent.h>
 #import<BaiduMapAPI_Location/BMKLocationComponent.h>
 #import <BaiduMapAPI_Search/BMKSearchComponent.h>
+#import "CASLocationManager.h"
 
 #define Y1               50
 #define Y2               self.view.frame.size.height - 250
@@ -37,6 +38,7 @@
 //目标地址坐标
 @property (nonatomic, assign) CLLocationCoordinate2D aidLocation;
 
+@property (nonatomic, strong) CASLocationManager *locManager;
 
 @end
 
@@ -83,12 +85,14 @@
 #pragma mark - system
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     [self mapView];
     //设置定位
     [self locService];
     //地理编码反编码
     [self geoSearcher];
-    self.view.backgroundColor = [UIColor whiteColor];
+    //后台任务测试
+    [self startLocationService];
     //隐藏nav+tabBar
     self.navigationController.navigationBarHidden = YES;
     self.tabBarController.tabBar.hidden = YES;
@@ -329,6 +333,28 @@
     else {
         NSLog(@"抱歉，未找到结果");
     }
+}
+
+#pragma mark - backWorkTest
+
+- (void)startLocationService{
+    
+    CASLocationManager *manager = [CASLocationManager sharedLocationManager];
+    manager.isBackGroundLocation = YES;
+    manager.locationInterval = 10;
+    //    @weakify(manager)
+    [manager setCASBackGroundLocationHander:^(CLLocationCoordinate2D coordinate) {
+        CASLog(@"---latitude----%f,,----longitude----%f",coordinate.latitude,coordinate.longitude);
+        //        @strongify(manager) //注意别造成循环引用
+        //        [manager geoCodeSearchWithCoorinate:coordinate address:^(NSString *address, NSUInteger error) {
+        //            YZLMLOG(@">>>>>>>>>>address:%@",address);
+        //        }];
+    }];
+    
+    [manager setCASBackGroundGeocderAddressHander:^(NSString *address) {
+        CASLog(@">>>>>>>>>>address:%@",address);
+    }];
+    [manager startLocationService];
 }
 
 

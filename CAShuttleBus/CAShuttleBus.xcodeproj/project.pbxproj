@@ -26,6 +26,8 @@
 		CF8C702B1F94A4E1006BC3EB /* UIBarButtonItem+CASBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C702A1F94A4E1006BC3EB /* UIBarButtonItem+CASBarButtonItem.m */; };
 		CFBB03351FC66C1A00173733 /* CASShuttleBusRouteItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBB03341FC66C1A00173733 /* CASShuttleBusRouteItem.m */; };
 		CFBB03371FC68B9000173733 /* CASShuttleBusRouteItem.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFBB03361FC68B9000173733 /* CASShuttleBusRouteItem.plist */; };
+		CFBB033B1FC7C2E600173733 /* CASLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBB033A1FC7C2E600173733 /* CASLocationManager.m */; };
+		CFBB033E1FC7C2FA00173733 /* CASBackgroundTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBB033D1FC7C2FA00173733 /* CASBackgroundTaskManager.m */; };
 		CFC73EEC1FC3EE83008603B2 /* CASKeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC73EEB1FC3EE83008603B2 /* CASKeychainWrapper.m */; };
 		CFC73EF21FC44B33008603B2 /* CASShuttleBusRouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC73EF11FC44B33008603B2 /* CASShuttleBusRouteViewController.m */; };
 		CFC73EF51FC44D64008603B2 /* CASShuttleBusRouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC73EF41FC44D64008603B2 /* CASShuttleBusRouteCell.m */; };
@@ -80,6 +82,11 @@
 		CFBB03331FC66C1A00173733 /* CASShuttleBusRouteItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASShuttleBusRouteItem.h; sourceTree = "<group>"; };
 		CFBB03341FC66C1A00173733 /* CASShuttleBusRouteItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASShuttleBusRouteItem.m; sourceTree = "<group>"; };
 		CFBB03361FC68B9000173733 /* CASShuttleBusRouteItem.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CASShuttleBusRouteItem.plist; sourceTree = "<group>"; };
+		CFBB03391FC7C2E600173733 /* CASLocationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASLocationManager.h; sourceTree = "<group>"; };
+		CFBB033A1FC7C2E600173733 /* CASLocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASLocationManager.m; sourceTree = "<group>"; };
+		CFBB033C1FC7C2FA00173733 /* CASBackgroundTaskManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASBackgroundTaskManager.h; sourceTree = "<group>"; };
+		CFBB033D1FC7C2FA00173733 /* CASBackgroundTaskManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASBackgroundTaskManager.m; sourceTree = "<group>"; };
+		CFBB03401FC7C78100173733 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
 		CFC73EE61FC3B8DE008603B2 /* CAShuttleBus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CAShuttleBus.entitlements; sourceTree = "<group>"; };
 		CFC73EEA1FC3EE83008603B2 /* CASKeychainWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASKeychainWrapper.h; sourceTree = "<group>"; };
 		CFC73EEB1FC3EE83008603B2 /* CASKeychainWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASKeychainWrapper.m; sourceTree = "<group>"; };
@@ -361,6 +368,7 @@
 				CF8546F21F94562300374F74 /* main.m */,
 				CF64C0FA1F97613F00933702 /* CAS_PrefixHeader.pch */,
 				CF16694F1FC2A0BF009CDA04 /* WeakAndStrong.h */,
+				CFBB03401FC7C78100173733 /* Singleton.h */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -368,6 +376,7 @@
 		CF8546F31F94562300374F74 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CFBB03381FC7C29900173733 /* LocationManager */,
 				CFC73EE91FC3EE6F008603B2 /* KeychainWrapper */,
 				CF8546F41F94562300374F74 /* Categories */,
 			);
@@ -422,6 +431,17 @@
 				CF8C701F1F946BF0006BC3EB /* CASLoginView.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		CFBB03381FC7C29900173733 /* LocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				CFBB03391FC7C2E600173733 /* CASLocationManager.h */,
+				CFBB033A1FC7C2E600173733 /* CASLocationManager.m */,
+				CFBB033C1FC7C2FA00173733 /* CASBackgroundTaskManager.h */,
+				CFBB033D1FC7C2FA00173733 /* CASBackgroundTaskManager.m */,
+			);
+			path = LocationManager;
 			sourceTree = "<group>";
 		};
 		CFC73EE91FC3EE6F008603B2 /* KeychainWrapper */ = {
@@ -621,6 +641,8 @@
 				CFC73EEC1FC3EE83008603B2 /* CASKeychainWrapper.m in Sources */,
 				CF8C70141F945D89006BC3EB /* CASAppDelegate.mm in Sources */,
 				CF8C701D1F9463A4006BC3EB /* CASLoginViewController.m in Sources */,
+				CFBB033B1FC7C2E600173733 /* CASLocationManager.m in Sources */,
+				CFBB033E1FC7C2FA00173733 /* CASBackgroundTaskManager.m in Sources */,
 				CF8C70151F945DAB006BC3EB /* main.m in Sources */,
 				CF8C70201F946BF0006BC3EB /* CASLoginView.m in Sources */,
 				CFBB03351FC66C1A00173733 /* CASShuttleBusRouteItem.m in Sources */,

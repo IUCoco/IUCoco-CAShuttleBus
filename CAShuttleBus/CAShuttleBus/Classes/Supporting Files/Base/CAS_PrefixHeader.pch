@@ -30,6 +30,11 @@
 #define CASLog(...)
 #endif
 
+//system
+#define CASSystemVersion [[[UIDevice currentDevice] systemVersion] floatValue]
+#define CASiOS8Later (CASSystemVersion >= 8)
+#define CASiOS9Later (CASSystemVersion >= 9)
+
 //size
 #define CASScreenWith [UIScreen mainScreen].bounds.size.width
 #define CASScreenHight [UIScreen mainScreen].bounds.size.height
