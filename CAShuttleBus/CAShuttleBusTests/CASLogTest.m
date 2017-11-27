@@ -1,18 +1,21 @@
 //
-//  CAShuttleBusTests.m
+//  CASLogTest.m
 //  CAShuttleBusTests
 //
-//  Created by 清风 on 2017/10/16.
+//  Created by 清风 on 2017/11/27.
 //  Copyright © 2017年 zjairchina. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
+#import "CASBaseUnitTest.h"
+#import "NSArray+CASLog.h"
+#import "NSDictionary+CASLog.h"
 
-@interface CAShuttleBusTests : XCTestCase
+@interface CASLogTest : CASBaseUnitTest
 
 @end
 
-@implementation CAShuttleBusTests
+@implementation CASLogTest
 
 - (void)setUp {
     [super setUp];
@@ -25,8 +28,13 @@
 }
 
 - (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+    NSDictionary *dic = @{
+                        @"姓名":@"陈志强",
+                        @"年龄":@"18哦"
+                        };
+    NSLog(@"%@",  [dic descriptionWithLocale:nil]);
+    NSArray *arr = @[@"杭州", @"萧山", @"12杭州"];
+    NSLog(@"%@",  [arr descriptionWithLocale:nil]);
 }
 
 - (void)testPerformanceExample {
