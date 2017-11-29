@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "CASBaseUnitTest.h"
+#import "CASNetwork.h"
 
 
 @interface CASNetworkTest : CASBaseUnitTest
@@ -27,6 +28,11 @@
 }
 
 - (void)testExample {
+    NSString *dataUrl = @"http://api.budejie.com/api/api_open.php";
+    NSString *downloadUrl = @"http://wvideo.spriteapp.cn/video/2016/0328/56f8ec01d9bfe_wpd.mp4";
+    
+    
+    
     
 }
 

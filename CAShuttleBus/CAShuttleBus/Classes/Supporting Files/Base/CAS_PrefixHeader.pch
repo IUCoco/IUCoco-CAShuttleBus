@@ -25,6 +25,8 @@
 #import "UIImage+CASImage.h"
 #import "UIView+CASFrame.h"
 #import "UIButton+Block.h"
+#import "NSString+CASCrypto.h"
+
 
 //Debug Log
 #ifdef DEBUG//调试阶段

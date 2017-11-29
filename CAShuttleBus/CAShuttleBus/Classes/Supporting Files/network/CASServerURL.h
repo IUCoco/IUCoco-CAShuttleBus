@@ -6,4 +6,4 @@
 //  Copyright © 2017年 zjairchina. All rights reserved.
 //
 
-#define DRIVER_LOGIN_URL @"https://www.hzyis.com/PCDTH/login"
+#define k_DRIVER_LOGIN_URL @"https://www.hzyis.com/PCDTH/login"

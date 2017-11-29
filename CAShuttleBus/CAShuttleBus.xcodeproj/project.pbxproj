@@ -18,6 +18,9 @@
 		CF899C291FCC0445007AB4FB /* NSDictionary+CASLog.m in Sources */ = {isa = PBXBuildFile; fileRef = CF899C281FCC0445007AB4FB /* NSDictionary+CASLog.m */; };
 		CF899C2C1FCC0462007AB4FB /* NSArray+CASLog.m in Sources */ = {isa = PBXBuildFile; fileRef = CF899C2B1FCC0462007AB4FB /* NSArray+CASLog.m */; };
 		CF899C311FCC04E3007AB4FB /* CASLogTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CF899C301FCC04E3007AB4FB /* CASLogTest.m */; };
+		CF899C7C1FCD34CA007AB4FB /* CASNetworkCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CF899C7B1FCD34CA007AB4FB /* CASNetworkCache.m */; };
+		CF899C821FCD3C4F007AB4FB /* NSString+CASCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = CF899C811FCD3C4F007AB4FB /* NSString+CASCrypto.m */; };
+		CF899C851FCD541D007AB4FB /* CASNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = CF899C841FCD541D007AB4FB /* CASNetwork.m */; };
 		CF8C70101F94593C006BC3EB /* CASRootTabBarControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C700F1F94593C006BC3EB /* CASRootTabBarControllerViewController.m */; };
 		CF8C70131F945991006BC3EB /* CASRootNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C70121F945991006BC3EB /* CASRootNavigationViewController.m */; };
 		CF8C70141F945D89006BC3EB /* CASAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF8546F01F94562300374F74 /* CASAppDelegate.mm */; };
@@ -75,6 +78,12 @@
 		CF899C2A1FCC0462007AB4FB /* NSArray+CASLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+CASLog.h"; sourceTree = "<group>"; };
 		CF899C2B1FCC0462007AB4FB /* NSArray+CASLog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CASLog.m"; sourceTree = "<group>"; };
 		CF899C301FCC04E3007AB4FB /* CASLogTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASLogTest.m; sourceTree = "<group>"; };
+		CF899C7A1FCD34CA007AB4FB /* CASNetworkCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASNetworkCache.h; sourceTree = "<group>"; };
+		CF899C7B1FCD34CA007AB4FB /* CASNetworkCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASNetworkCache.m; sourceTree = "<group>"; };
+		CF899C801FCD3C4F007AB4FB /* NSString+CASCrypto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+CASCrypto.h"; sourceTree = "<group>"; };
+		CF899C811FCD3C4F007AB4FB /* NSString+CASCrypto.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+CASCrypto.m"; sourceTree = "<group>"; };
+		CF899C831FCD541D007AB4FB /* CASNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASNetwork.h; sourceTree = "<group>"; };
+		CF899C841FCD541D007AB4FB /* CASNetwork.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASNetwork.m; sourceTree = "<group>"; };
 		CF8C700E1F94593C006BC3EB /* CASRootTabBarControllerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASRootTabBarControllerViewController.h; sourceTree = "<group>"; };
 		CF8C700F1F94593C006BC3EB /* CASRootTabBarControllerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CASRootTabBarControllerViewController.m; sourceTree = "<group>"; };
 		CF8C70111F945991006BC3EB /* CASRootNavigationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CASRootNavigationViewController.h; sourceTree = "<group>"; };
@@ -392,6 +401,7 @@
 		CF8546F31F94562300374F74 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CF899C791FCD3491007AB4FB /* Network */,
 				CFBB03381FC7C29900173733 /* LocationManager */,
 				CFC73EE91FC3EE6F008603B2 /* KeychainWrapper */,
 				CF8546F41F94562300374F74 /* Categories */,
@@ -414,8 +424,21 @@
 				CF899C281FCC0445007AB4FB /* NSDictionary+CASLog.m */,
 				CF899C2A1FCC0462007AB4FB /* NSArray+CASLog.h */,
 				CF899C2B1FCC0462007AB4FB /* NSArray+CASLog.m */,
+				CF899C801FCD3C4F007AB4FB /* NSString+CASCrypto.h */,
+				CF899C811FCD3C4F007AB4FB /* NSString+CASCrypto.m */,
 			);
 			path = Categories;
+			sourceTree = "<group>";
+		};
+		CF899C791FCD3491007AB4FB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CF899C7A1FCD34CA007AB4FB /* CASNetworkCache.h */,
+				CF899C7B1FCD34CA007AB4FB /* CASNetworkCache.m */,
+				CF899C831FCD541D007AB4FB /* CASNetwork.h */,
+				CF899C841FCD541D007AB4FB /* CASNetwork.m */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		CF8C70171F946254006BC3EB /* Login */ = {
@@ -664,6 +687,7 @@
 				CFC73EF21FC44B33008603B2 /* CASShuttleBusRouteViewController.m in Sources */,
 				CF899C291FCC0445007AB4FB /* NSDictionary+CASLog.m in Sources */,
 				CF8C70131F945991006BC3EB /* CASRootNavigationViewController.m in Sources */,
+				CF899C821FCD3C4F007AB4FB /* NSString+CASCrypto.m in Sources */,
 				CFC73EF51FC44D64008603B2 /* CASShuttleBusRouteCell.m in Sources */,
 				CF8C702B1F94A4E1006BC3EB /* UIBarButtonItem+CASBarButtonItem.m in Sources */,
 				CF1669521FC2A330009CDA04 /* UIButton+Block.m in Sources */,
@@ -674,6 +698,8 @@
 				CFBB033B1FC7C2E600173733 /* CASLocationManager.m in Sources */,
 				CFBB033E1FC7C2FA00173733 /* CASBackgroundTaskManager.m in Sources */,
 				CF8C70151F945DAB006BC3EB /* main.m in Sources */,
+				CF899C851FCD541D007AB4FB /* CASNetwork.m in Sources */,
+				CF899C7C1FCD34CA007AB4FB /* CASNetworkCache.m in Sources */,
 				CF8C70201F946BF0006BC3EB /* CASLoginView.m in Sources */,
 				CFBB03351FC66C1A00173733 /* CASShuttleBusRouteItem.m in Sources */,
 				CF8C70101F94593C006BC3EB /* CASRootTabBarControllerViewController.m in Sources */,

@@ -11,6 +11,7 @@
 #import "NSArray+CASLog.h"
 #import "NSDictionary+CASLog.h"
 
+
 @interface CASLogTest : CASBaseUnitTest
 
 @end
@@ -32,9 +33,11 @@
                         @"姓名":@"陈志强",
                         @"年龄":@"18哦"
                         };
-    NSLog(@"%@",  [dic descriptionWithLocale:nil]);
+//    NSLog(@"%@",  [dic descriptionWithLocale:nil]);
     NSArray *arr = @[@"杭州", @"萧山", @"12杭州"];
     NSLog(@"%@",  [arr descriptionWithLocale:nil]);
+    NSLog(@"%@",  arr);
+    
 }
 
 - (void)testPerformanceExample {

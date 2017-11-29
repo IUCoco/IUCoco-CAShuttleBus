@@ -85,9 +85,6 @@
 #pragma mark - system
 - (void)viewDidLoad {
     [super viewDidLoad];
-#warning test接口
-    [self test];
-    
     self.view.backgroundColor = [UIColor whiteColor];
     [self mapView];
     //设置定位
@@ -359,42 +356,5 @@
     }];
     [manager startLocationService];
 }
-
-
-#pragma mark - test
-
-- (void)test {
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    parameters[@"entity.driver_mobile"] = @"18562510360";
-    parameters[@"entity.driver_password"] = @"18562510360";
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] init];
-    //接收@"text/html"
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", nil];
-    // 2.设置非校验证书模式
-    manager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
-    manager.securityPolicy.allowInvalidCertificates = YES;
-    [manager.securityPolicy setValidatesDomainName:NO];
-    
-    
-    [manager POST:DRIVER_LOGIN_URL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
-
-    } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
-        CASLog(@"成功了ooooooo");
-        CASLog(@"responseObject::::::::%@", [responseObject descriptionWithLocale:nil]);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        CASLog(@"失败了ooooooo%@", error);
-    }];
-    
-    
-    
-//    [manager GET:DRIVER_LOGIN_URL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
-//
-//    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        CASLog(@"成功了ooooooo");
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        CASLog(@"失败了ooooooo");
-//    }];
-}
-
 
 @end

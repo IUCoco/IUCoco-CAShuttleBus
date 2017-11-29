@@ -11,6 +11,7 @@
 #import "CASRootTabBarControllerViewController.h"
 #import "CASKeychainWrapper.h"
 #import "CASKeychainConfiguration.h"
+#import "CASNetwork.h"
 
 typedef NS_ENUM(NSUInteger, LoginStatus) {
     LoginStatusUnKnown,
@@ -37,6 +38,8 @@ typedef NS_ENUM(NSUInteger, LoginStatus) {
     [self setUpUI];
     [self dealAccountAndPwdTextF];
     [self dealTouchUpInside];
+#warning 接口测试
+    [self loginRequest];
 }
 
 /**
@@ -178,6 +181,26 @@ typedef NS_ENUM(NSUInteger, LoginStatus) {
             loginV.pwdTextF.text = [keychainWrapper readPassword];
         }
     }
+}
+
+#pragma mark - 网络请求
+- (void)loginRequest {
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"entity.driver_mobile"] = @"18562510360";
+    parameters[@"entity.driver_password"] = @"18562510360";
+    [CASNetwork setAFHTTPSessionManagerProperty:^(AFHTTPSessionManager *sessionManager) {
+        //允许无效证书
+        sessionManager.securityPolicy.allowInvalidCertificates = YES;
+        //不验证域名
+        sessionManager.securityPolicy.validatesDomainName = NO;
+    }];
+    [CASNetwork POST:k_DRIVER_LOGIN_URL parameters:parameters success:^(id responseObject) {
+        CASLog(@"成功了ooooooo");
+        CASLog(@"responseObject::::::::%@", [responseObject descriptionWithLocale:nil]);
+        
+    } failure:^(NSError *error) {
+        CASLog(@"失败了ooooooo%@", error);
+    }];
 }
 
 @end
