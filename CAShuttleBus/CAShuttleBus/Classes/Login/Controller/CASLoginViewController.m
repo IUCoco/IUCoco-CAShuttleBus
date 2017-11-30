@@ -21,6 +21,7 @@ typedef NS_ENUM(NSUInteger, LoginStatus) {
     LoginStatusFailed,
     LoginStatusUserNameError,
     LoginStatusPassWordError,
+    LoginStatusUserNameOrPassWordError,
     LoginStatusTermsError,//条款没勾选
     LoginStatusNetworkError
 };
@@ -118,66 +119,29 @@ typedef NS_ENUM(NSUInteger, LoginStatus) {
                 //不验证域名
                 sessionManager.securityPolicy.validatesDomainName = NO;
             }];
-            [CASNetwork POST:k_DRIVER_LOGIN_URL parameters:parameters success:^(id responseObject) {
-//                self.loginStatus = LoginStatusSuccess;
-                //keychain
-                if (userAccount.length > 0) {
-                    CASKeychainWrapper *keychainWrapper = [[CASKeychainWrapper alloc] initWithSevice:kKeychainService account:userAccount accessGroup:kKeychainAccessGroup];
+            
+            [CASNetwork POST:k_DRIVER_LOGIN_URL parameters:parameters success:^(NSDictionary *responseObject) {
+                NSInteger isLoginSuccess = [responseObject[@"success"] integerValue];
+                if (isLoginSuccess == 1) {//1成功0失败
+                    //self.loginStatus = LoginStatusSuccess;
+                    //keychain
+                    CASKeychainWrapper *keychainWrapper = [[CASKeychainWrapper alloc] initWithSevice:kKeychainService account:userAccount  accessGroup:kKeychainAccessGroup];
                     [keychainWrapper savePassword:passWord];
                     //登录成功跳转
                     CASRootTabBarControllerViewController *rootTabBarVC = [[CASRootTabBarControllerViewController alloc] init];
                     [UIApplication sharedApplication].keyWindow.rootViewController = rootTabBarVC;
+                }else {
+//                    self.loginStatus = LoginStatusUserNameOrPassWordError;
+                    //用户名或密码错误alert
+                    [self showUserNameOrPassWordErrorAlertView];
                 }
+                
             } failure:^(NSError *error) {
 //                self.loginStatus = LoginStatusFailed;
-                //显示用户名或者密码错误alert
+                //请求失败alert
             }];
         }];
     }
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
-    return YES;
-}
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    if ([self.view.subviews[0] isMemberOfClass:[CASLoginView class]]) {
-        CASLoginView *loginV = self.view.subviews[0];
-        [loginV.accountTextF resignFirstResponder];
-        [loginV.pwdTextF resignFirstResponder];
-    }
-}
-
-#pragma mark - 私有方法
-//此方法仅仅判断勾选协议与网络状态
-- (LoginStatus)checkingLoginStatus {
-    //需先要判断是否勾选用户协议
-    if (!self.isTermsOfServiceBtnSelected) {
-        //提示用户没有勾选协议
-        [self showTermsOfServiceAlertView];
-//        self.loginStatus =  LoginStatusFailed;
-        return LoginStatusTermsError;
-    }
-    
-    //判断网络
-    if (![CASNetwork isNetwork]) {
-        //提示用户网络不可用
-        [self showBadNetworkAlertView];
-//        self.loginStatus = LoginStatusFailed;
-        return LoginStatusNetworkError;
-    }
-    
-    return LoginStatusMiddleSuccess;
-    
-}
-
-- (void)showTermsOfServiceAlertView {
-    
-}
-
-- (void)showBadNetworkAlertView {
-    
 }
 
 /**
@@ -193,6 +157,53 @@ typedef NS_ENUM(NSUInteger, LoginStatus) {
             loginV.pwdTextF.text = [keychainWrapper readPassword];
         }
     }
+}
+
+//此方法仅仅判断勾选协议与网络状态
+- (LoginStatus)checkingLoginStatus {
+    //需先要判断是否勾选用户协议
+    if (!self.isTermsOfServiceBtnSelected) {
+        //提示用户没有勾选协议
+        [self showTermsOfServiceAlertView];
+        //        self.loginStatus =  LoginStatusFailed;
+        return LoginStatusTermsError;
+    }
+    
+    //判断网络
+    if (![CASNetwork isNetwork]) {
+        //提示用户网络不可用
+        [self showBadNetworkAlertView];
+        //        self.loginStatus = LoginStatusFailed;
+        return LoginStatusNetworkError;
+    }
+    
+    return LoginStatusMiddleSuccess;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    if ([self.view.subviews[0] isMemberOfClass:[CASLoginView class]]) {
+        CASLoginView *loginV = self.view.subviews[0];
+        [loginV.accountTextF resignFirstResponder];
+        [loginV.pwdTextF resignFirstResponder];
+    }
+}
+
+#pragma mark - alertView
+- (void)showTermsOfServiceAlertView {
+    
+}
+
+- (void)showBadNetworkAlertView {
+    
+}
+
+- (void)showUserNameOrPassWordErrorAlertView {
+    
 }
 
 
