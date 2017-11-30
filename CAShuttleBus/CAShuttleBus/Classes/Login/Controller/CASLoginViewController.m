@@ -13,6 +13,7 @@
 #import "CASKeychainConfiguration.h"
 #import "CASNetwork.h"
 #import <AFNetworking.h>
+#import <JCAlertController.h>
 
 typedef NS_ENUM(NSUInteger, LoginStatus) {
     LoginStatusUnKnown,
@@ -66,6 +67,8 @@ typedef NS_ENUM(NSUInteger, LoginStatus) {
     UIView *CASLoginV = [[CASLoginView alloc] init];
     CASLoginV.frame = self.view.frame;
     [self.view addSubview:CASLoginV];
+    //自定义alertViewStyle
+    [self customAlertStyle];
 }
 
 #pragma mark - dealEvent
@@ -195,17 +198,52 @@ typedef NS_ENUM(NSUInteger, LoginStatus) {
 
 #pragma mark - alertView
 - (void)showTermsOfServiceAlertView {
+    JCAlertController *alert = [JCAlertController alertWithTitle:nil message:@"请勾选用户协议"];
+    [alert addButtonWithTitle:@"知道了" type:JCButtonTypeNormal clicked:^{
+        
+    }];
     
+    [self jc_presentViewController:alert presentCompletion:^{
+        
+    } dismissCompletion:^{
+        
+    }];
 }
 
 - (void)showBadNetworkAlertView {
+    JCAlertController *alert = [JCAlertController alertWithTitle:nil message:@"网络无法连接"];
+    [alert addButtonWithTitle:@"知道了" type:JCButtonTypeNormal clicked:^{
+        
+    }];
     
+    [self jc_presentViewController:alert presentCompletion:^{
+        
+    } dismissCompletion:^{
+        
+    }];
 }
 
 - (void)showUserNameOrPassWordErrorAlertView {
+    JCAlertController *alert = [JCAlertController alertWithTitle:nil message:@"用户名或密码错误"];
+    [alert addButtonWithTitle:@"知道了" type:JCButtonTypeNormal clicked:^{
+        
+    }];
     
+    [self jc_presentViewController:alert presentCompletion:^{
+        
+    } dismissCompletion:^{
+        
+    }];
 }
 
+//自定义alertStyle
+- (void)customAlertStyle {
+    JCAlertStyle *style = [JCAlertStyle shareStyle];
+    style.background.blur = YES;
+    style.background.alpha = 0.65;
+    style.background.canDismiss = YES;
+    style.alertView.cornerRadius = 20;
+}
 
 
 @end
