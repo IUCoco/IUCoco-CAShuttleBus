@@ -9,6 +9,7 @@
 
 #import "CASLoginView.h"
 #import "CASLoginViewController.h"
+#import <YYText.h>
 
 @interface CASLoginView ()
 

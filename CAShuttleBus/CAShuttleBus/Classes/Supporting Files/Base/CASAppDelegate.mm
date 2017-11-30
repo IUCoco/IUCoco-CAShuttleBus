@@ -21,7 +21,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    //**网络监测**
     
+    
+    //**地图设置**
     // 要使用百度地图，请先启动BaiduMapManager
     _mapManager = [[BMKMapManager alloc]init];
     /**
@@ -39,7 +42,7 @@
         CASLog(@"manager start failed!");
     }
     
-    
+    //**根控制器设置**
     //1.创建窗口
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     //2.设置窗口根控制器

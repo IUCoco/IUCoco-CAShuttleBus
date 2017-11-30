@@ -12,20 +12,24 @@
 #import "CASKeychainWrapper.h"
 #import "CASKeychainConfiguration.h"
 #import "CASNetwork.h"
+#import <AFNetworking.h>
 
 typedef NS_ENUM(NSUInteger, LoginStatus) {
     LoginStatusUnKnown,
+    LoginStatusMiddleSuccess,//条款和网络监测成功 半成功登录状态
     LoginStatusSuccess,
     LoginStatusFailed,
     LoginStatusUserNameError,
     LoginStatusPassWordError,
+    LoginStatusTermsError,//条款没勾选
     LoginStatusNetworkError
 };
 
 @interface CASLoginViewController ()<UITextFieldDelegate>
 
 @property (nonatomic, assign, getter=isTermsOfServiceBtnSelected) BOOL termsOfServiceBtnSelected;
-@property (nonatomic, strong)NSMutableArray *keychainWrappers;
+@property (nonatomic, strong) NSMutableArray *keychainWrappers;
+//@property (nonatomic, assign) LoginStatus loginStatus;
 
 @end
 
@@ -38,8 +42,10 @@ typedef NS_ENUM(NSUInteger, LoginStatus) {
     [self setUpUI];
     [self dealAccountAndPwdTextF];
     [self dealTouchUpInside];
-#warning 接口测试
-    [self loginRequest];
+    //网络相关
+    [CASNetwork openLog];
+    //监测登录的状态
+    [self checkingLoginStatus];
 }
 
 /**
@@ -93,33 +99,39 @@ typedef NS_ENUM(NSUInteger, LoginStatus) {
             }
         }];
         
+        //登录按钮点击事件
         [loginV.loginBtn addActionHandler:^(UIButton *btn) {
-            //验证
-            LoginStatus status = [self checkingLoginStatus];
-            switch (status) {
-                case LoginStatusSuccess: {
+            //网络状态判定+++用户协议勾选状态判定，无网络提醒+return，有网络继续执行
+            if ([self checkingLoginStatus] != LoginStatusMiddleSuccess) return;
+            
+            //**判断用户名密码**
+            //先遍历keychain中是否有值，若有值最后一个赋值给accountTextF和pwdTextF
+            NSString *userAccount = weakLoginV.accountTextF.text;
+            NSString *passWord = weakLoginV.pwdTextF.text;
+            //网络请求
+            NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+            parameters[@"entity.driver_mobile"] = userAccount;
+            parameters[@"entity.driver_password"] = passWord;
+            [CASNetwork setAFHTTPSessionManagerProperty:^(AFHTTPSessionManager *sessionManager) {
+                //允许无效证书
+                sessionManager.securityPolicy.allowInvalidCertificates = YES;
+                //不验证域名
+                sessionManager.securityPolicy.validatesDomainName = NO;
+            }];
+            [CASNetwork POST:k_DRIVER_LOGIN_URL parameters:parameters success:^(id responseObject) {
+//                self.loginStatus = LoginStatusSuccess;
+                //keychain
+                if (userAccount.length > 0) {
+                    CASKeychainWrapper *keychainWrapper = [[CASKeychainWrapper alloc] initWithSevice:kKeychainService account:userAccount accessGroup:kKeychainAccessGroup];
+                    [keychainWrapper savePassword:passWord];
+                    //登录成功跳转
                     CASRootTabBarControllerViewController *rootTabBarVC = [[CASRootTabBarControllerViewController alloc] init];
                     [UIApplication sharedApplication].keyWindow.rootViewController = rootTabBarVC;
                 }
-                    break;
-                case LoginStatusUserNameError:
-                    
-                    break;
-                case LoginStatusPassWordError:
-                    
-                    break;
-                case LoginStatusNetworkError:
-                    
-                    break;
-                case LoginStatusFailed:
-                    
-                    break;
-                case LoginStatusUnKnown:
-                    
-                    break;
-                default:
-                    break;
-            }
+            } failure:^(NSError *error) {
+//                self.loginStatus = LoginStatusFailed;
+                //显示用户名或者密码错误alert
+            }];
         }];
     }
 }
@@ -138,33 +150,33 @@ typedef NS_ENUM(NSUInteger, LoginStatus) {
 }
 
 #pragma mark - 私有方法
+//此方法仅仅判断勾选协议与网络状态
 - (LoginStatus)checkingLoginStatus {
     //需先要判断是否勾选用户协议
     if (!self.isTermsOfServiceBtnSelected) {
         //提示用户没有勾选协议
         [self showTermsOfServiceAlertView];
-        return LoginStatusFailed;
-    }
-    //判断用户名密码
-    if ([self.view.subviews[0] isMemberOfClass:[CASLoginView class]]) {
-        //先遍历keychain中是否有值，若有值最后一个赋值给accountTextF和pwdTextF
-        CASLoginView *loginV = self.view.subviews[0];
-        NSString *userAccount = loginV.accountTextF.text;
-        NSString *passWord = loginV.pwdTextF.text;
-        if ([userAccount isEqualToString:@"0000099512"] && [passWord isEqualToString:@"0000099512"]) {
-            //keychain
-            if (userAccount.length > 0) {
-                CASKeychainWrapper *keychainWrapper = [[CASKeychainWrapper alloc] initWithSevice:kKeychainService account:userAccount accessGroup:kKeychainAccessGroup];
-                [keychainWrapper savePassword:passWord];
-            }
-            
-        }
+//        self.loginStatus =  LoginStatusFailed;
+        return LoginStatusTermsError;
     }
     
-    return LoginStatusSuccess;
+    //判断网络
+    if (![CASNetwork isNetwork]) {
+        //提示用户网络不可用
+        [self showBadNetworkAlertView];
+//        self.loginStatus = LoginStatusFailed;
+        return LoginStatusNetworkError;
+    }
+    
+    return LoginStatusMiddleSuccess;
+    
 }
 
 - (void)showTermsOfServiceAlertView {
+    
+}
+
+- (void)showBadNetworkAlertView {
     
 }
 
@@ -183,24 +195,6 @@ typedef NS_ENUM(NSUInteger, LoginStatus) {
     }
 }
 
-#pragma mark - 网络请求
-- (void)loginRequest {
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    parameters[@"entity.driver_mobile"] = @"18562510360";
-    parameters[@"entity.driver_password"] = @"18562510360";
-    [CASNetwork setAFHTTPSessionManagerProperty:^(AFHTTPSessionManager *sessionManager) {
-        //允许无效证书
-        sessionManager.securityPolicy.allowInvalidCertificates = YES;
-        //不验证域名
-        sessionManager.securityPolicy.validatesDomainName = NO;
-    }];
-    [CASNetwork POST:k_DRIVER_LOGIN_URL parameters:parameters success:^(id responseObject) {
-        CASLog(@"成功了ooooooo");
-        CASLog(@"responseObject::::::::%@", [responseObject descriptionWithLocale:nil]);
-        
-    } failure:^(NSError *error) {
-        CASLog(@"失败了ooooooo%@", error);
-    }];
-}
+
 
 @end

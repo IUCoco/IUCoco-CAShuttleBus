@@ -9,6 +9,7 @@
 #import "CASNetwork.h"
 #import <AFNetworkActivityIndicatorManager.h>
 #import "CASNetworkCache.h"
+#import <AFNetworking.h>
 
 #ifdef DEBUG
 #define CASNetworkLog(...) printf("[%s] %s [%d]: %s\n", __TIME__, __PRETTY_FUNCTION__, __LINE__, [[NSString stringWithFormat:__VA_ARGS__] UTF8String])
