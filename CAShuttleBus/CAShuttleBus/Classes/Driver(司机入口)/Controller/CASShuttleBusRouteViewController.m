@@ -10,7 +10,7 @@
 #import "CASShuttleBusRouteCell.h"
 #import "CASShuttleBusRouteItem.h"
 
-#define Y1               50
+#define Y1 50
 
 @interface CASShuttleBusRouteViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 

@@ -17,8 +17,8 @@ PODS:
   - BaiduMapKit (3.4.0)
   - JCAlertController (2.2.1)
   - Masonry (1.0.2)
-  - MJExtension (3.0.13)
   - YYCache (1.0.4)
+  - YYModel (1.0.4)
   - YYText (1.0.7)
 
 DEPENDENCIES:
@@ -26,8 +26,8 @@ DEPENDENCIES:
   - BaiduMapKit (~> 3.4.0)
   - JCAlertController (~> 2.2.1)
   - Masonry (~> 1.0.2)
-  - MJExtension (~> 3.0.13)
   - YYCache (~> 1.0.4)
+  - YYModel (~> 1.0.4)
   - YYText (~> 1.0.7)
 
 SPEC CHECKSUMS:
@@ -35,10 +35,10 @@ SPEC CHECKSUMS:
   BaiduMapKit: 0a5e5e0b1e3fd8dc5aceb40ab9b89e52e1d13df9
   JCAlertController: 16423f39cf2f3924c7a7074923e009c1b552e2b3
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
-  MJExtension: 5932755f451458eefa24239358817f8d291240c7
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
+  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: c21b457aa1381cc9d8cec416ac8784fb008f2035
+PODFILE CHECKSUM: 19339c28993b1052c0d4be19a334ba216eedcdb5
 
 COCOAPODS: 1.3.1

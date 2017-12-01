@@ -13,9 +13,9 @@
 #import <BaiduMapAPI_Search/BMKSearchComponent.h>
 #import "CASLocationManager.h"
 
-#define Y1               50
-#define Y2               self.view.frame.size.height - 250
-#define Y3               self.view.frame.size.height - 64
+#define Y1 50
+#define Y2 self.view.frame.size.height - 250
+#define Y3 self.view.frame.size.height - 64
 
 @interface CASDriverViewController ()<UIGestureRecognizerDelegate, BMKMapViewDelegate, BMKLocationServiceDelegate, BMKGeoCodeSearchDelegate>
 
