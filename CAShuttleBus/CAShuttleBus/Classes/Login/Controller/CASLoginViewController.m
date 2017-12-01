@@ -47,7 +47,10 @@ typedef NS_ENUM(NSUInteger, LoginStatus) {
     //网络相关
     [CASNetwork openLog];
     //监测登录的状态
-    [self checkingLoginStatus];
+    //*****进入程序过快，会有显示网络不可用bug，在这里延时0.5秒判断***
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self checkingLoginStatus];
+    });
 }
 
 /**
@@ -172,6 +175,7 @@ typedef NS_ENUM(NSUInteger, LoginStatus) {
         return LoginStatusTermsError;
     }
     
+    //*****进入程序过快，会有显示网络不可用bug，在这里延时0.5秒判断***
     //判断网络
     if (![CASNetwork isNetwork]) {
         //提示用户网络不可用
