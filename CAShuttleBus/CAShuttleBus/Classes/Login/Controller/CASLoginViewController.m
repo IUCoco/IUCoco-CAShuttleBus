@@ -127,35 +127,41 @@ typedef NS_ENUM(NSUInteger, LoginStatus) {
                 sessionManager.securityPolicy.validatesDomainName = NO;
             }];
             
-            [CASNetwork POST:k_DRIVER_LOGIN_URL parameters:parameters success:^(NSDictionary *responseObject) {
-                NSInteger isLoginSuccess = [responseObject[@"success"] integerValue];
-                if (isLoginSuccess == 1) {//1成功0失败
-                    //self.loginStatus = LoginStatusSuccess;
-                    //keychain
-                    CASKeychainWrapper *keychainWrapper = [[CASKeychainWrapper alloc] initWithSevice:kKeychainService account:userAccount  accessGroup:kKeychainAccessGroup];
-                    [keychainWrapper savePassword:passWord];
-                    
-                    //driver信息存储
-                    CASDriverItem *driver = [CASDriverItem sharedDriver];
-                    driver.driver_id = responseObject[@"resultObject"][@"driver_id"];
-                    driver.city = responseObject[@"resultObject"][@"city"];
-                    driver.driver_sex = responseObject[@"resultObject"][@"driver_sex"];
-                    driver.driver_remark = responseObject[@"resultObject"][@"driver_remark"];
-                    driver.driver_mobile = responseObject[@"resultObject"][@"driver_mobile"];
-                    driver.driver_birthday = responseObject[@"resultObject"][@"driver_birthday"];
-                    driver.driver_status = [responseObject[@"resultObject"][@"driver_status"] integerValue];
-                    driver.driver_name = responseObject[@"resultObject"][@"driver_name"];
-                    driver.driver_account = responseObject[@"resultObject"][@"driver_account"];
-                    
-                    //登录成功跳转
-                    CASRootTabBarControllerViewController *rootTabBarVC = [[CASRootTabBarControllerViewController alloc] init];
-                    [UIApplication sharedApplication].keyWindow.rootViewController = rootTabBarVC;
-                }else {
-//                    self.loginStatus = LoginStatusUserNameOrPassWordError;
-                    //用户名或密码错误alert
-                    [self showUserNameOrPassWordErrorAlertView];
+            [CASNetwork POST:k_DRIVER_LOGIN_URL parameters:parameters success:^(NSDictionary *responseObject, REQUEST_RESULT_STATE resultState) {
+                switch (resultState) {
+                    case REQUEST_RESULT_STATE_SUCCEED_WITH_DATA: {
+                        //self.loginStatus = LoginStatusSuccess;
+                        //keychain
+                        CASKeychainWrapper *keychainWrapper = [[CASKeychainWrapper alloc] initWithSevice:kKeychainService account:userAccount  accessGroup:kKeychainAccessGroup];
+                        [keychainWrapper savePassword:passWord];
+                        
+                        //driver信息存储
+                        CASDriverItem *driver = [CASDriverItem sharedDriver];
+                        driver.driver_id = responseObject[@"resultObject"][@"driver_id"];
+                        driver.city = responseObject[@"resultObject"][@"city"];
+                        driver.driver_sex = responseObject[@"resultObject"][@"driver_sex"];
+                        driver.driver_remark = responseObject[@"resultObject"][@"driver_remark"];
+                        driver.driver_mobile = responseObject[@"resultObject"][@"driver_mobile"];
+                        driver.driver_birthday = responseObject[@"resultObject"][@"driver_birthday"];
+                        driver.driver_status = [responseObject[@"resultObject"][@"driver_status"] integerValue];
+                        driver.driver_name = responseObject[@"resultObject"][@"driver_name"];
+                        driver.driver_account = responseObject[@"resultObject"][@"driver_account"];
+                        
+                        //登录成功跳转
+                        CASRootTabBarControllerViewController *rootTabBarVC = [[CASRootTabBarControllerViewController alloc] init];
+                        [UIApplication sharedApplication].keyWindow.rootViewController = rootTabBarVC;
+                    }
+                        break;
+                    case REQUEST_RESULT_STATE_SUCCEED_WITHOUT_DATA: {
+                        //self.loginStatus = LoginStatusUserNameOrPassWordError;
+                        //用户名或密码错误alert
+                        [self showUserNameOrPassWordErrorAlertView];
+                    }
+                        break;
+                    default:
+                        break;
                 }
-                
+                                
             } failure:^(NSError *error) {
 //                self.loginStatus = LoginStatusFailed;
                 //请求失败alert

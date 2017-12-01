@@ -9,6 +9,8 @@
 #import "CASShuttleBusRouteViewController.h"
 #import "CASShuttleBusRouteCell.h"
 #import "CASShuttleBusRouteItem.h"
+#import "CASNetwork.h"
+#import "CASDriverItem.h"
 
 #define Y1 50
 
@@ -65,6 +67,7 @@ static NSString * const CASShuttleBusRouteCellID = @"CASShuttleBusRouteCellID";
     if (!_shuttleBusRouteArrM) {
 #warning 暂时没有数据源 利用plist代替
 //        _shuttleBusRouteArrM = [CASShuttleBusRouteItem mj_objectArrayWithFilename:@"CASShuttleBusRouteItem.plist"];
+        _shuttleBusRouteArrM = [NSMutableArray array];
     }
     return _shuttleBusRouteArrM;
 }
@@ -76,6 +79,7 @@ static NSString * const CASShuttleBusRouteCellID = @"CASShuttleBusRouteCellID";
     self.definesPresentationContext = YES;
     [self setupSubViews];
     [self.myTab registerClass:[CASShuttleBusRouteCell class] forCellReuseIdentifier:CASShuttleBusRouteCellID];
+    [self fetchBusRouteSchedule];
 }
 
 /**
@@ -175,6 +179,32 @@ static NSString * const CASShuttleBusRouteCellID = @"CASShuttleBusRouteCellID";
     [cancelBtn sendActionsForControlEvents:UIControlEventTouchUpInside];
     //    NSLog(@"+++++++ didSelect ++++++++");
 #warning 跳转至具体班车路线页面
+}
+
+
+#pragma mark - network
+- (void)fetchBusRouteSchedule {
+    CASDriverItem *driver = [CASDriverItem sharedDriver];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"entity.order_driver_id"] = driver.driver_id;
+    [CASNetwork POST:k_DRIVER_BUSROUTE_SCHEDULE parameters:parameters success:^(NSDictionary *responseObject, REQUEST_RESULT_STATE resultState) {
+        switch (resultState) {
+            case REQUEST_RESULT_STATE_SUCCEED_WITH_DATA: {
+               //判断当前司机线路时刻表信息是否为空
+            }
+                break;
+            case REQUEST_RESULT_STATE_SUCCEED_WITHOUT_DATA: {
+                //由于司机ID不正确等原因导致不能获取线路时刻表信息
+            }
+                break;
+                
+            default:
+                break;
+        }
+        
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 

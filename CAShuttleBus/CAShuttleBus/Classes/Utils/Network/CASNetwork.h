@@ -38,7 +38,9 @@ typedef NS_ENUM(NSUInteger, CASResponseSerializer) {
 };
 
 // 请求成功的Block
-typedef void(^CASHttpRequestSuccess)(id responseObject);
+//typedef void(^CASHttpRequestSuccess)(id responseObject);
+typedef void(^CASHttpRequestSuccess)(id responseObject, REQUEST_RESULT_STATE resultState);
+
 
 // 请求失败的Block
 typedef void(^CASHttpRequestFailed)(NSError *error);

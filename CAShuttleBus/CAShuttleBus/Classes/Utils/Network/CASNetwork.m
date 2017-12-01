@@ -17,11 +17,16 @@
 #define CASNetworkLog(...)
 #endif
 
+@interface CASNetwork()
+
+@end
+
 @implementation CASNetwork
 
 static BOOL _isOpenLog;   // 是否已开启日志打印
 static NSMutableArray<NSURLSessionTask *> *_allSessionTask;
 static AFHTTPSessionManager *_sessionManager;
+static CASHttpRequestSuccess _requestSuccess;
 
 #pragma mark - 网络监听
 + (void)networkStatusWithBlock:(CASNetworkStatus)networkStatus {
@@ -118,6 +123,7 @@ static AFHTTPSessionManager *_sessionManager;
                      responseCache:(CASHttpRequestCache)responseCache
                            success:(CASHttpRequestSuccess)success
                            failure:(CASHttpRequestFailed)failure {
+    _requestSuccess = success;
     //读取缓存
     responseCache != nil ? responseCache([CASNetworkCache httpCacheForURL:URL parameters:parameters]) : nil;
     NSURLSessionTask *sessionTask = [_sessionManager GET:URL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
@@ -125,7 +131,8 @@ static AFHTTPSessionManager *_sessionManager;
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (_isOpenLog) CASNetworkLog(@"responseObject = %@", responseObject);
         [[self allSessionTask] removeObject:task];
-        success ? success(responseObject) : nil;
+        [self p_dealWithSucceedResponsedData:responseObject];
+//        success ? success(responseObject) : nil;
         //对数据进行异步缓存
         responseCache != nil ? [CASNetworkCache setHttpCache:responseObject URL:URL parameters:parameters] : nil;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -144,6 +151,7 @@ static AFHTTPSessionManager *_sessionManager;
                       responseCache:(CASHttpRequestCache)responseCache
                             success:(CASHttpRequestSuccess)success
                             failure:(CASHttpRequestFailed)failure {
+    _requestSuccess = success;
     //读取缓存
     responseCache != nil ? responseCache([CASNetworkCache httpCacheForURL:URL parameters:parameters]) : nil;
     NSURLSessionTask *sessionTask = [_sessionManager POST:URL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
@@ -151,7 +159,8 @@ static AFHTTPSessionManager *_sessionManager;
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (_isOpenLog) CASNetworkLog(@"responseObject = %@", responseObject);
         [[self allSessionTask] removeObject:task];
-        success ? success(responseObject) : nil;
+        [self p_dealWithSucceedResponsedData:responseObject];
+//        success ? success(responseObject) : nil;
         //对数据进行异步缓存
         responseCache != nil ? [CASNetworkCache setHttpCache:responseObject URL:URL parameters:parameters] : nil;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -172,6 +181,7 @@ static AFHTTPSessionManager *_sessionManager;
                                         progress:(CASHttpProgress)progress
                                          success:(CASHttpRequestSuccess)success
                                          failure:(CASHttpRequestFailed)failure {
+    _requestSuccess = success;
     NSURLSessionTask *sessionTask = [_sessionManager POST:URL parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         NSError *error = nil;
         [formData appendPartWithFileURL:[NSURL fileURLWithPath:filePath] name:name error:&error];
@@ -184,7 +194,8 @@ static AFHTTPSessionManager *_sessionManager;
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (_isOpenLog) CASNetworkLog(@"responseObject = %@", responseObject);
         [[self allSessionTask] removeObject:task];
-        success ? success(responseObject) : nil;
+        [self p_dealWithSucceedResponsedData:responseObject];
+//        success ? success(responseObject) : nil;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (_isOpenLog) CASNetworkLog(@"error = %@", error);
         [[self allSessionTask] removeObject:task];
@@ -206,6 +217,7 @@ static AFHTTPSessionManager *_sessionManager;
                                           progress:(CASHttpProgress)progress
                                            success:(CASHttpRequestSuccess)success
                                            failure:(CASHttpRequestFailed)failure {
+    _requestSuccess = success;
     NSURLSessionTask *sessionTask = [_sessionManager POST:URL parameters:progress constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         for (NSInteger i = 0 ; i < images.count; i++) {
             //iPhone手机相册照片格式为.jpg
@@ -229,7 +241,8 @@ static AFHTTPSessionManager *_sessionManager;
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (_isOpenLog) CASNetworkLog(@"responseObject = %@", responseObject);
         [[self allSessionTask] removeObject:task];
-        success ? success(responseObject) : nil;
+        [self p_dealWithSucceedResponsedData:responseObject];
+//        success ? success(responseObject) : nil;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (_isOpenLog) CASNetworkLog(@"error = %@", error);
         [[self allSessionTask] removeObject:task];
@@ -336,5 +349,17 @@ static AFHTTPSessionManager *_sessionManager;
     }
     return _allSessionTask;
 }
+
+#pragma mark - REQUEST_RESULT_STATE处理
++ (void)p_dealWithSucceedResponsedData:(id)responseObject {
+    REQUEST_RESULT_STATE state = REQUEST_RESULT_STATE_SUCCEED_WITH_DATA;
+    if ([responseObject[@"success"] integerValue] == 0) {
+        state = REQUEST_RESULT_STATE_SUCCEED_WITHOUT_DATA;
+    }else if ([responseObject[@"success"] integerValue] != (0 || 1)) {
+        state = REQUEST_RESULT_STATE_FAILED_WITH_SOME_TROUBLE;
+    }
+    _requestSuccess(responseObject, state);
+}
+
 
 @end
