@@ -64,7 +64,7 @@ static NSString * const CASShuttleBusRouteCellID = @"CASShuttleBusRouteCellID";
 - (NSMutableArray *)shuttleBusRouteArrM {
     if (!_shuttleBusRouteArrM) {
 #warning 暂时没有数据源 利用plist代替
-        _shuttleBusRouteArrM = [CASShuttleBusRouteItem mj_objectArrayWithFilename:@"CASShuttleBusRouteItem.plist"];
+//        _shuttleBusRouteArrM = [CASShuttleBusRouteItem mj_objectArrayWithFilename:@"CASShuttleBusRouteItem.plist"];
     }
     return _shuttleBusRouteArrM;
 }

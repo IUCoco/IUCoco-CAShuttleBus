@@ -14,6 +14,7 @@
 #import "CASNetwork.h"
 #import <AFNetworking.h>
 #import <JCAlertController.h>
+#import "CASDriverItem.h"
 
 typedef NS_ENUM(NSUInteger, LoginStatus) {
     LoginStatusUnKnown,
@@ -133,6 +134,19 @@ typedef NS_ENUM(NSUInteger, LoginStatus) {
                     //keychain
                     CASKeychainWrapper *keychainWrapper = [[CASKeychainWrapper alloc] initWithSevice:kKeychainService account:userAccount  accessGroup:kKeychainAccessGroup];
                     [keychainWrapper savePassword:passWord];
+                    
+                    //driver信息存储
+                    CASDriverItem *driver = [CASDriverItem sharedDriver];
+                    driver.driver_id = responseObject[@"resultObject"][@"driver_id"];
+                    driver.city = responseObject[@"resultObject"][@"city"];
+                    driver.driver_sex = responseObject[@"resultObject"][@"driver_sex"];
+                    driver.driver_remark = responseObject[@"resultObject"][@"driver_remark"];
+                    driver.driver_mobile = responseObject[@"resultObject"][@"driver_mobile"];
+                    driver.driver_birthday = responseObject[@"resultObject"][@"driver_birthday"];
+                    driver.driver_status = [responseObject[@"resultObject"][@"driver_status"] integerValue];
+                    driver.driver_name = responseObject[@"resultObject"][@"driver_name"];
+                    driver.driver_account = responseObject[@"resultObject"][@"driver_account"];
+                    
                     //登录成功跳转
                     CASRootTabBarControllerViewController *rootTabBarVC = [[CASRootTabBarControllerViewController alloc] init];
                     [UIApplication sharedApplication].keyWindow.rootViewController = rootTabBarVC;
