@@ -260,6 +260,11 @@ typedef NS_ENUM(NSUInteger, LoginStatus) {
     }];
 }
 
+//提示用户勾选允许访问位置和远程push，体验完整信息
+- (void)showPushAndLocationAlertView {
+    
+}
+
 //自定义alertStyle
 - (void)customAlertStyle {
     JCAlertStyle *style = [JCAlertStyle shareStyle];
